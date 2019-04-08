@@ -52,7 +52,7 @@
             width: 100%;
             text-align: center;
             display: flex;
-            justify-content:space-around;
+            justify-content: space-around;
         }
 
         #footer h5 {
@@ -95,20 +95,22 @@
         Array.prototype.forEach.call(gllis, function (btn) {
             btn.addEventListener('click', function (event) {
                 var getid = event.currentTarget.getAttribute('id');
+                api.closeFrame();
                 zdyopenFrame(getid);
             })
         })
         function zdyopenFrame(x) {
             api.openFrame({
                 name: x,
-                url: 'html/'+x+'.html',
-                bounces: true,
+                url: 'html/' + x + '.html',
+                bounces: false,
                 rect: {
                     x: 0,
                     y: headerPos.h,
                     w: 'auto',
                     h: mainPos.h
-                }
+                },
+                vScrollBarEnabled:false
             })
         }
         zdyopenFrame('shouye')
