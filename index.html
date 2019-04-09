@@ -8,6 +8,7 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/aui.css" />
     <style type="text/css">
         html,
         body {
@@ -24,21 +25,6 @@
             flex-flow: column;
         }
 
-        #header {
-            text-align: center;
-            background-color: #81a9c3;
-            color: #fff;
-            width: 100%;
-        }
-
-        #header h1 {
-            font-size: 20px;
-            height: 44px;
-            line-height: 44px;
-            margin: 0em;
-            color: #fff;
-        }
-
         #main {
             -webkit-box-flex: 1;
             -webkit-flex: 1;
@@ -46,74 +32,101 @@
         }
 
         #footer {
-            height: 50px;
-            line-height: 50px;
-            background-color: #81a9c3;
+            height: 62px;
             width: 100%;
-            text-align: center;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        #footer h5 {
-            color: white;
-        }
-
-        .con {
-            font-size: 28px;
-            text-align: center;
         }
     </style>
 </head>
 
 <body>
     <div id="wrap">
-        <div id="header">
+        <!-- <div id="header">
             <h1>APICloud</h1>
-        </div>
+        </div> -->
         <div id="main">
 
         </div>
         <div id="footer">
-            <div id="shouye">首页</div>
-            <div id="vip">vip</div>
-            <div id="list">list</div>
-            <div id="me">me</div>
+            <footer class="aui-bar aui-bar-tab">
+                <div class="aui-bar-tab-item aui-active" tapmode>
+                    <i class="aui-iconfont aui-icon-home"></i>
+                    <div class="aui-bar-tab-label">首页</div>
+                </div>
+                <div class="aui-bar-tab-item" tapmode>
+                    <i class="aui-iconfont aui-icon-star"></i>
+                    <div class="aui-bar-tab-label">收藏</div>
+                </div>
+                <div class="aui-bar-tab-item" tapmode>
+                    <div class="aui-badge">99</div>
+                    <i class="aui-iconfont aui-icon-cart"></i>
+                    <div class="aui-bar-tab-label">购物车</div>
+                </div>
+                <div class="aui-bar-tab-item" tapmode>
+                    <div class="aui-dot"></div>
+                    <i class="aui-iconfont aui-icon-my"></i>
+                    <div class="aui-bar-tab-label">我的</div>
+                </div>
+            </footer>
         </div>
+
     </div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
     apiready = function () {
-        var header = $api.byId('header');
+        //var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
-        $api.fixStatusBar(header);
-        var headerPos = $api.offset(header);
+        //$api.fixStatusBar(header);
+        //var headerPos = $api.offset(header);
         var main = $api.byId('main');
         var mainPos = $api.offset(main);
-        var gllis = $api.domAll('#footer div');
+        var gllis = $api.domAll('.aui-bar-tab-item');
+        //切换点击
         Array.prototype.forEach.call(gllis, function (btn) {
             btn.addEventListener('click', function (event) {
-                var getid = event.currentTarget.getAttribute('id');
-                api.closeFrame();
-                zdyopenFrame(getid);
+                var index = 0;
+                for (var i = 0, len = gllis.length; i < len; i++) {
+                    if (btn == gllis[i]) {
+                        index = i;
+                        $api.addCls(gllis[index], 'aui-active');
+                        api.setFrameGroupIndex({
+                            name: 'group',
+                            index: index,
+                        })
+                    } else {
+                        $api.removeCls(gllis[i], 'aui-active');
+                    }
+                }
             })
         })
-        function zdyopenFrame(x) {
-            api.openFrame({
-                name: x,
-                url: 'html/' + x + '.html',
-                bounces: false,
-                rect: {
-                    x: 0,
-                    y: headerPos.h,
-                    w: 'auto',
-                    h: mainPos.h
-                },
-                vScrollBarEnabled:false
+        //创建四个窗口
+        var frames = [];
+        var frames_name = ['shouye', 'vip', 'list', 'me'];
+        for (var i = 0, len = frames_name.length; i < len; i++) {
+            frames.push({
+                name: frames_name[i],
+                url: './html/' + frames_name[i] + '.html',
+                bgColor: 'rgba(0,0,0,2)',
+                bounces: true
             })
         }
-        zdyopenFrame('shouye')
+        api.openFrameGroup({
+            name: 'group',
+            scrollEnabled: false,
+            rect: {
+                x: 0,
+                y: 0,//headerPos.h,
+                w: api.winWidth,
+                h: mainPos.h
+            },
+            preload: 2,//frames_name.length,
+            index: 0,
+            frames: frames
+        }, function (ret, err) {
+        });
+
+
+
     }
 </script>
 
