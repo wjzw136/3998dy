@@ -17,7 +17,9 @@
 
 <body>
     <div id="wrap">
+        <div class="header">
 
+        </div>
         <div id="main">
 
         </div>
@@ -25,17 +27,13 @@
             <footer class="aui-bar aui-bar-tab">
                 <div class="aui-bar-tab-item aui-active" tapmode>
                     <i class="aui-iconfont aui-icon-home"></i>
-                    <div class="aui-bar-tab-label">首页</div>
+                    <div class="aui-bar-tab-label">游戏</div>
                 </div>
                 <div class="aui-bar-tab-item" tapmode>
                     <i class="aui-iconfont aui-icon-star"></i>
-                    <div class="aui-bar-tab-label">收藏</div>
+                    <div class="aui-bar-tab-label">福利</div>
                 </div>
-                <div class="aui-bar-tab-item" tapmode>
-                    <div class="aui-badge">99</div>
-                    <i class="aui-iconfont aui-icon-cart"></i>
-                    <div class="aui-bar-tab-label">购物车</div>
-                </div>
+                
                 <div class="aui-bar-tab-item" tapmode>
                     <div class="aui-dot"></div>
                     <i class="aui-iconfont aui-icon-my"></i>
@@ -49,11 +47,12 @@
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
     apiready = function () {
-        //var header = $api.byId('header');
+        var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
-        //$api.fixStatusBar(header);
+        
         //var headerPos = $api.offset(header);
         var main = $api.byId('main');
+        $api.fixStatusBar(header);
         var mainPos = $api.offset(main);
         var gllis = $api.domAll('.aui-bar-tab-item');
         //切换点击
@@ -69,7 +68,6 @@
                             index: index,
                         })
                         if (frames_name[i] == 'shouye') {
-                            console.log(frames_name[i])
                             api.setFrameAttr({
                                 name: frames_name[i] + '_frame',
                                 hidden: false
@@ -77,13 +75,10 @@
                         }else{
                             console.log(frames_name[i])
                             api.setFrameAttr({
-                                
                                 name: 'shouye_frame',
                                 hidden: true
                             });
                         }
-
-
                     } else {
                         $api.removeCls(gllis[i], 'aui-active');
                     }
@@ -92,7 +87,7 @@
         })
         //创建四个窗口
         var frames = [];
-        var frames_name = ['shouye', 'vip', 'list', 'me'];
+        var frames_name = ['shouye', 'fuli', 'me'];
         for (var i = 0, len = frames_name.length; i < len; i++) {
             frames.push({
                 name: frames_name[i],

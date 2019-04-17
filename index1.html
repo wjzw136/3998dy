@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="./css/public.css" />
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+
+        <div id="main">
+
+        </div>
+        <div id="footer">
+            <footer class="aui-bar aui-bar-tab">
+                <div class="aui-bar-tab-item aui-active" tapmode>
+                    <i class="aui-iconfont aui-icon-home"></i>
+                    <div class="aui-bar-tab-label">游戏</div>
+                </div>
+                <div class="aui-bar-tab-item" tapmode>
+                    <i class="aui-iconfont aui-icon-star"></i>
+                    <div class="aui-bar-tab-label">福利</div>
+                </div>
+
+                <div class="aui-bar-tab-item" tapmode>
+                    <div class="aui-dot"></div>
+                    <i class="aui-iconfont aui-icon-my"></i>
+                    <div class="aui-bar-tab-label">我的</div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        api.openTabLayout({
+            name: 'tabLayout',
+            url: 'widget://html/tabLayout.html',
+            hideTabBar: false,
+            navigationBar: {
+                background: '#5082c2',
+                color: '#fff',
+                leftButtons: [{
+                    iconPath: 'widget://image/back.png'
+                }]
+            },
+            tabBar: {
+                selectedColor: '#45C01A',
+                animated: true,
+                list: [{
+                    text: '页面一',
+                    iconPath: 'widget://image/tab_1.png',
+                    selectedIconPath: 'widget://image/tab_1_hov.png'
+                }, {
+                    text: '页面二',
+                    iconPath: 'widget://image/tab_2.png',
+                    selectedIconPath: 'widget://image/tab_2_hov.png'
+                }, {
+                    text: '页面三',
+                    iconPath: 'widget://image/tab_3.png',
+                    selectedIconPath: 'widget://image/tab_3_hov.png'
+                }],
+                frames: [{
+                    name: 'page1',
+                    url: './html/shouye.html'
+                }, {
+                    name: 'page2',
+                    url: './html/list.html'
+                }, {
+                    name: 'page3',
+                    url: './html/me.html'
+                }]
+            }
+        });
+
+    }
+</script>
+
+</html>

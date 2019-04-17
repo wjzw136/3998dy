@@ -16,15 +16,48 @@
 		}
 	</style>
 </head>
+
 <body>
 
-<div style="height:1200px;background-color: deepskyblue">sdsdd</div>
-<div style="height:50px;line-height: 50px;background-color: deeppink">时间肯定很难杀就看到</div>
+	<div style="height:1200px;background-color: deepskyblue">sdsdd</div>
+	<div style="height:50px;line-height: 50px;background-color: deeppink">时间肯定很难杀就看到</div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
 	apiready = function () {
-
+		api.setCustomRefreshHeaderInfo({
+			bgColor: '#C0C0C0',
+			images: {
+				pull: 'widget://image/refresh/pulling.png',
+				transform: [
+					'widget://image/refresh/transform0.png',
+					'widget://image/refresh/transform1.png',
+					'widget://image/refresh/transform2.png',
+					'widget://image/refresh/transform3.png',
+					'widget://image/refresh/transform4.png',
+					'widget://image/refresh/transform5.png',
+					'widget://image/refresh/transform6.png'
+				],
+				load: [
+					'widget://image/refresh/loading0.png',
+					'widget://image/refresh/loading1.png',
+					'widget://image/refresh/loading2.png',
+					'widget://image/refresh/loading3.png',
+					'widget://image/refresh/loading4.png',
+				]
+			}
+		}, function (ret, err) {
+			
+			//在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+			if (JSON.stringify(ret)=='{}') {
+				api.toast({
+					msg: '数据加载失败',
+					duration: 1000,
+					location: 'bottom'
+				});
+			}
+			api.refreshHeaderLoadDone();
+		});
 
 	};
 </script>
