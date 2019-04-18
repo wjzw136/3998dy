@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <style>
+        #bt{
+            height: 50px;
+            padding: 0px 20px;
+            font-size: 20px;
+            line-height: 50px;
+            background-color: black;
+            color: #fff;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="bt">
+        蚊子腿
+    </div>
+
+
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        var NVNavigationBar = api.require('NVNavigationBar');
+        NVNavigationBar.open({
+            rect: {
+                x: 0,
+                y: 50,
+                w: api.frameWidth,
+                h: 50
+            },
+            styles: {
+                orientation: 'horizontal',
+                    bg: '#ffffff',
+                    bgAlpha: 1,
+                    font: {
+                        size: 18,
+                        sizeSelected: 20,
+                        color: '#03a9f4',
+                        colorSelected: '#E44F26',
+                        alpha: 1
+                    },
+                    itemSize: {
+                        w: (api.winWidth) / 5,
+                        h: 50
+                    }
+            },
+            items: [{
+                title: '攻略是的',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            }, {
+                title: '渔获2万',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            }, {
+                title: '官推sdfas',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            }, {
+                title: '活动sd2',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            }, {
+                title: '兑换',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            } ,{
+                title: '活动',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            },  {
+                title: '活动',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            },  {
+                title: '活动',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            },  {
+                title: '活动sdasd',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            }],
+            selectedIndex: 1,
+            fixedOn: api.frameName,
+            id: 'first'
+        }, function (ret, err) {
+            console.log(api.frameName)
+        });
+    };
+</script>
+
+</html>
