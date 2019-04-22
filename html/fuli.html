@@ -23,7 +23,42 @@
 
 		</div>
 		<div id="main">
-
+			<section class="aui-grid">
+				<div class="aui-row">
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-home"></i>
+						<div class="aui-grid-label">首页</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-gear"></i>
+						<div class="aui-grid-label">设置</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-map"></i>
+						<div class="aui-grid-label">地图</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-calendar"></i>
+						<div class="aui-grid-label">日历</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-date"></i>
+						<div class="aui-grid-label">日期</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-cart"></i>
+						<div class="aui-grid-label">购物车</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-paper"></i>
+						<div class="aui-grid-label">发现</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="aui-iconfont aui-icon-video"></i>
+						<div class="aui-grid-label">视频</div>
+					</div>
+				</div>
+			</section>
 		</div>
 
 	</div>
@@ -31,7 +66,19 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+		api.setRefreshHeaderInfo({
+			loadingImg: 'widget://image/refresh.png',
+			bgColor: '#ccc',
+			textColor: '#fff',
+			textDown: '下拉刷新...',
+			textUp: '松开刷新...'
+		}, function (ret, err) {
+			//在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+			setTimeout(function () {
+				api.refreshHeaderLoadDone()
+			}, 1000);
 
+		});
 	};
 </script>
 

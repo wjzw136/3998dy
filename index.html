@@ -51,8 +51,6 @@
     apiready = function () {
         var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
-        var HeaderHeight = [100, 200, 50];
-
         //var headerPos = $api.offset(header);
         var main = $api.byId('main');
         // $api.fixStatusBar(header);
@@ -65,103 +63,16 @@
                 for (var i = 0, len = gllis.length; i < len; i++) {
                     if (btn == gllis[i]) {
                         index = i;
-                        openheaderFrame(shouye_frames_name[index], HeaderHeight[index]);
+                       // openheaderFrame(shouye_frames_name[index], HeaderHeight[index]);
                         $api.addCls(gllis[index], 'aui-active');
                         if (i == 0) {
-
-
-                            api.openFrameGroup({
-                                name: 'shouye_group',
-                                scrollEnabled: true,
-                                rect: {
-                                    x: 0,
-                                    y: HeaderHeight[0],
-                                    w: api.winWidth,
-                                    h: api.winHeight - HeaderHeight[0] - 50
-                                },
-                                preload: shouye_frames_name.length,
-                                index: 0,
-                                frames: shouye_frames
-                            }, function (ret, err) {
-                                api.setFrameGroupAttr({
-                                    name: 'fuli_group',
-                                    hidden: true
-                                });
-
-                                api.setFrameAttr({
-                                    name: 'fuli_header',
-                                    hidden: true
-                                });
-                                api.setFrameAttr({
-                                    name: 'me_header',
-                                    hidden: true
-                                });
-                                api.setFrameAttr({
-                                    name: 'me',
-                                    hidden: true
-                                });
-                            });
-                            // api.setFrameGroupAttr({
-                            //     name: 'shouye_group',
-                            //     hidden: false,
-                            //     rect: {
-                            //         x: 0,
-                            //         y: HeaderHeight[0],
-                            //         w: api.winWidth,
-                            //         h: api.winHeight - HeaderHeight[0] - 50
-                            //     }
-                            // })
-
-
-
-
+                            shouyeGroupName = 'shouyeGroup'
+                            shouyeGroupHtml = ['shouye', 'fuli', 'me']
+                            cj_group(shouyeGroupName, shouyeGroupHtml)
                         } else if (i == 1) {
-                            api.openFrameGroup({
-                                name: 'fuli_group',
-                                scrollEnabled: true,
-                                rect: {
-                                    x: 0,
-                                    y: HeaderHeight[1],
-                                    w: api.winWidth,
-                                    h: api.winHeight - HeaderHeight[1] - 50
-                                },
-                                preload: fuli_frames_name.length,
-                                index: 0,
-                                frames: fuli_frames
-                            }, function (ret, err) {
-                                api.setFrameGroupAttr({
-                                    name: 'shouye_group',
-                                    hidden: true
-                                });
-                                api.setFrameAttr({
-                                    name: 'shouye_header',
-                                    hidden: true
-                                });
-                                api.setFrameAttr({
-                                    name: 'me_header',
-                                    hidden: true
-                                });
-                                api.setFrameAttr({
-                                    name: 'me',
-                                    hidden: true
-                                });
-                            });
-                            // api.setFrameGroupAttr({
-                            //     name: 'fuli_group',
-                            //     hidden: false,
-                            //     rect: {
-                            //         x: 0,
-                            //         y: HeaderHeight[1],
-                            //         w: api.winWidth,
-                            //         h: api.winHeight - HeaderHeight[1] - 50
-                            //     }
-                            // });
-
-
-
-
-
-
+                            shouyeGroupName = 'fuliGroup'
+                            shouyeGroupHtml = ['1', '2', '3']
+                            cj_group(shouyeGroupName, shouyeGroupHtml)
                         } else {
 
                             api.openFrame({
@@ -170,30 +81,13 @@
                                 bounces: true,
                                 rect: {
                                     x: 0,
-                                    y: HeaderHeight[2],
+                                    y: 0,
                                     w: 'auto',
-                                    h: api.winHeight - HeaderHeight[2] - 50
+                                    h: api.winHeight- 50
                                 }
                             });
-                            api.setFrameGroupAttr({
-                                name: 'shouye_group',
-                                hidden: true
-                            });
-                            api.setFrameGroupAttr({
-                                name: 'fuli_group',
-                                hidden: true
-                            });
-
-                            api.setFrameAttr({
-                                name: 'fuli_header',
-                                hidden: true
-                            });
-                            api.setFrameAttr({
-                                name: 'shouye_header',
-                                hidden: true
-                            });
+                            
                         }
-
 
                     } else {
                         $api.removeCls(gllis[i], 'aui-active');
@@ -201,89 +95,43 @@
                 }
             })
         })
+        shouyeGroupName = 'shouyeGroup'
+        shouyeGroupHtml=['shouye','fuli','me']
+        cj_group(shouyeGroupName, shouyeGroupHtml)
 
+       // openheaderFrame(shouye_frames_name[0], HeaderHeight[0]);
 
-        var fuli_frames = [];
-        var fuli_frames_name = ['1', '2', '3'];
-        for (var i = 0, len = fuli_frames_name.length; i < len; i++) {
-            fuli_frames.push({
-                name: fuli_frames_name[i],
-                url: './html/' + fuli_frames_name[i] + '.html',
-                bgColor: 'rgba(0,0,0,2)',
-                bounces: true
-            })
-        }
-        api.openFrameGroup({
-            name: 'fuli_group',
-            scrollEnabled: true,
-            rect: {
-                x: 0,
-                y: HeaderHeight[1],
-                w: api.winWidth,
-                h: api.winHeight - HeaderHeight[1] - 50
-            },
-            preload: fuli_frames_name.length,
-            index: 0,
-            frames: fuli_frames
-        }, function (ret, err) {
-        });
-        //创建shouye窗口
-        var app_group = ['shouye_group', 'fuli_group'];
-
-        var shouye_frames = [];
-        var shouye_frames_name = ['shouye', 'fuli', 'me'];
-        for (var i = 0, len = shouye_frames_name.length; i < len; i++) {
-            shouye_frames.push({
-                name: shouye_frames_name[i],
-                url: './html/' + shouye_frames_name[i] + '.html',
-                bgColor: 'rgba(0,0,0,2)',
-                bounces: true
-            })
-        }
-        api.openFrameGroup({
-            name: 'shouye_group',
-            scrollEnabled: true,
-            rect: {
-                x: 0,
-                y: HeaderHeight[0],
-                w: api.winWidth,
-                h: api.winHeight - HeaderHeight[0] - 50
-            },
-            preload: shouye_frames_name.length,
-            index: 0,
-            frames: shouye_frames
-        }, function (ret, err) {
-        });
-
-        //创建fuli窗口
-
-        api.setFrameGroupAttr({
-            name: 'fuli_group',
-            hidden: true
-        });
-
-        openheaderFrame(shouye_frames_name[0], HeaderHeight[0]);
+       
     }
-
-    function openheaderFrame(x, y) {
-        api.openFrame({
-            name: x + '_header',
-            url: './html/' + x + '_header.html',
-            bounces: false,
+    
+    
+    function cj_group(GroupName, FramesName) {
+        var frames = [];
+        for (var i = 0, len = FramesName.length; i < len; i++) {
+            frames.push({
+                name: FramesName[i],
+                url: './html/' + FramesName[i] + '.html',
+                bgColor: 'rgba(0,0,0,2)',
+                bounces: true
+            })
+        }
+        api.openFrameGroup({
+            name: GroupName,
             scrollEnabled: true,
-            // animation: {
-            //     type: "fade",                //动画类型（详见动画类型常量）
-            //     subType: "from_right",       //动画子类型（详见动画子类型常量）
-            //     duration: 300                //动画过渡时间，默认300毫秒
-            // },
             rect: {
                 x: 0,
                 y: 0,
-                w: 'auto',
-                h: y
-            }
+                w: api.winWidth,
+                h: api.winHeight - 50
+            },
+            preload: FramesName.length,
+            index: 0,
+            frames: frames
+        }, function (ret, err) {
         });
     }
+
+    
 </script>
 
 </html>
