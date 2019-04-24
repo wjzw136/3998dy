@@ -12,53 +12,61 @@
     <link rel="stylesheet" type="text/css" href="../css/public.css" />
     <style>
         #main {
-            background-color: aquamarine
+            background-color: aquamarine;
+            height: 1800px;
         }
 
         #header {
             height: 80px;
         }
-
-        #main {
-            height: 1800px;
-        }
     </style>
 </head>
 
 <body>
-    <div class="aui-content aui-margin-b-15">
-        <ul class="aui-list aui-media-list">
-            <li class="aui-list-item">
-                <div class="aui-media-list-item-inner">
-                    <div class="aui-list-item-media">
-                        <img src="../../image/demo1.png">
-                    </div>
-                    <div class="aui-list-item-inner">
-                        <div class="aui-list-item-text">
-                            <div class="aui-list-item-title">带有媒体的列表二</div>
-                            
-                        </div>
-                        <div class="aui-list-item-text">
-                            在下方我们加入了aui-info信息条
-                            在下方我们加入了aui-info信息条
-                            在下方我们加入了aui-info信息条
-                            在下方我们加入了aui-info信息条
-                            在下方我们加入了aui-info信息条
-                            在下方我们加入了aui-info信息条
-                        </div>
-                    </div>
-                </div>
-                <div class="aui-info" style="padding-top:0">
-                    <div class="aui-info-item">
-                        <img src="../../image/liulangnan.png" style="width:1rem" class="aui-img-round" /><span
-                            class="aui-margin-l-5">流浪男</span>
-                    </div>
-                    <div class="aui-info-item">2015-07-14 10:31</div>
-                </div>
-            </li>
-        </ul>
-    </div>
     
+        <div id="header">
+
+        </div>
+        <div id="main">
+            <div class="aui-content aui-margin-b-15">
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-item">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media">
+                                <img src="../../image/demo1.png">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">带有媒体的列表二</div>
+            
+                                </div>
+                                <div class="aui-list-item-text">
+                                    在下方我们加入了aui-info信息条
+                                    在下方我们加入了aui-info信息条
+                                    在下方我们加入了aui-info信息条
+                                    在下方我们加入了aui-info信息条
+                                    在下方我们加入了aui-info信息条
+                                    在下方我们加入了aui-info信息条
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <img src="../../image/liulangnan.png" style="width:1rem" class="aui-img-round" /><span
+                                    class="aui-margin-l-5">流浪男</span>
+                            </div>
+                            <div class="aui-info-item">2015-07-14 10:31</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            sdsd
+        </div>
+    
+    
+
 
 
 
@@ -77,30 +85,10 @@
             setTimeout(function () {
                 api.refreshHeaderLoadDone()
             }, 1000);
-
         });
+        var header = $api.byId('header');
+        
 
-        api.openFrameGroup({
-            name: 'group_name',
-            scrollEnabled: false,
-            rect: {
-                x:0,
-                y:120,
-                w:'auto',
-                h:api.winHeight-120-50
-            },
-            index: 0,
-            frames: [{
-                name: '1', 
-                url: './1.html'
-            },{
-                name: '2', 
-                url: './2.html'
-            }]
-        }, function(ret, err){
-            var name  = ret.name;
-            var index = ret.index;
-        });
     };
 </script>
 

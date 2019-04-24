@@ -9,23 +9,16 @@
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" type="text/css" href="./css/aui.css" />
-    <link rel="stylesheet" type="text/css" href="./css/public.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./css/public.css" /> -->
     <style type="text/css">
-        #header {
-            height: 120px;
-        }
+        
     </style>
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="header" class="header">
-
-        </div>
-        <div id="main">
-
-        </div>
-        <div id="footer">
+    
+        
+        
             <footer class="aui-bar aui-bar-tab">
                 <div class="aui-bar-tab-item aui-active" tapmode>
                     <i class="aui-iconfont aui-icon-home"></i>
@@ -42,9 +35,9 @@
                     <div class="aui-bar-tab-label">我的</div>
                 </div>
             </footer>
-        </div>
+        
 
-    </div>
+    
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
@@ -57,54 +50,64 @@
         var mainPos = $api.offset(main);
         var gllis = $api.domAll('.aui-bar-tab-item');
         //切换点击
+        var Group = {
+            'root_shouye_Group': {
+                'shouye': 'shouye',
+                'fuli': 'fuli',
+                'me': 'me'
+            },
+            'root_fuli_Group': {
+                'x': '1',
+                'y': '2',
+                'z': '3'
+            },
+            'me': 'me'
+
+        }
         Array.prototype.forEach.call(gllis, function (btn) {
             btn.addEventListener('click', function (event) {
                 var index = 0;
                 for (var i = 0, len = gllis.length; i < len; i++) {
                     if (btn == gllis[i]) {
                         index = i;
-                       // openheaderFrame(shouye_frames_name[index], HeaderHeight[index]);
+                        // openheaderFrame(shouye_frames_name[index], HeaderHeight[index]);
                         $api.addCls(gllis[index], 'aui-active');
+                        api.setFrameGroupIndex({
+                            name: 'root_shouye_Group',
+                            index: i,
+                            scroll: false
+                        });
                         if (i == 0) {
-                            shouyeGroupName = 'shouyeGroup'
-                            shouyeGroupHtml = ['shouye', 'fuli', 'me']
-                            cj_group(shouyeGroupName, shouyeGroupHtml)
+                            // cj_group(root_shouye_Group, root_shouye_GroupHtml)
+                            // showframe('group_name')
                         } else if (i == 1) {
-                            shouyeGroupName = 'fuliGroup'
-                            shouyeGroupHtml = ['1', '2', '3']
-                            cj_group(shouyeGroupName, shouyeGroupHtml)
+                            // cj_group(root_fuli_Group, root_fuli_GroupHtml)
                         } else {
-
-                            api.openFrame({
-                                name: 'me',
-                                url: './html/me.html',
-                                bounces: true,
-                                rect: {
-                                    x: 0,
-                                    y: 0,
-                                    w: 'auto',
-                                    h: api.winHeight- 50
-                                }
-                            });
-                            
+                            // cj_group(root_me_Group, root_me_GroupHtml)
                         }
-
                     } else {
                         $api.removeCls(gllis[i], 'aui-active');
                     }
                 }
             })
         })
-        shouyeGroupName = 'shouyeGroup'
-        shouyeGroupHtml=['shouye','fuli','me']
-        cj_group(shouyeGroupName, shouyeGroupHtml)
+        var root_shouye_Group = 'root_shouye_Group'
+        var root_shouye_GroupHtml = ['shouye', 'fuli', 'me']
+        cj_group(root_shouye_Group, root_shouye_GroupHtml)
+        // var root_fuli_Group = 'root_fuli_Group'
+        // var root_fuli_GroupHtml = ['1', '2', '3']
+        // var root_me_Group = 'root_me_Group'
+        // var root_me_GroupHtml = ['me']
+        // cj_group(root_me_Group, root_me_GroupHtml)
+        // cj_group(root_fuli_Group, root_fuli_GroupHtml)
+        
 
-       // openheaderFrame(shouye_frames_name[0], HeaderHeight[0]);
+        // openheaderFrame(shouye_frames_name[0], HeaderHeight[0]);
+        
 
-       
     }
-    
-    
+
+
     function cj_group(GroupName, FramesName) {
         var frames = [];
         for (var i = 0, len = FramesName.length; i < len; i++) {
@@ -112,12 +115,12 @@
                 name: FramesName[i],
                 url: './html/' + FramesName[i] + '.html',
                 bgColor: 'rgba(0,0,0,2)',
-                bounces: true
+                bounces: false
             })
         }
         api.openFrameGroup({
             name: GroupName,
-            scrollEnabled: true,
+            scrollEnabled: false,
             rect: {
                 x: 0,
                 y: 0,
@@ -128,10 +131,15 @@
             index: 0,
             frames: frames
         }, function (ret, err) {
+            
         });
     }
 
     
+
+
+    
+
 </script>
 
 </html>
