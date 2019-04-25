@@ -12,31 +12,87 @@
 	<link rel="stylesheet" type="text/css" href="../css/public.css" />
 	<style>
 		#main {
-			background-color: cornflowerblue;
+
 			height: 1500px;
 		}
 	</style>
 </head>
 
 <body>
-	
-		<div id="header">
 
+	<div id="header">
+
+	</div>
+	<div id="xinxibox" class="tqbox">
+		<div style='height:50px;display: flex;align-items: center'>
+			<div class="imgbox" style="margin: 0 10px">
+				<img width="20px" src="../image/loading_more.gif">
+			</div>
+			<div style="font-size:12px;color:#ffffff">
+				<big>正在加载天气</big>
+			</div>
 		</div>
-		<div id="main">
-me
-		</div>
-		<div>
-			sdsd
-		</div>
-	
+	</div>
+	<script type="text/template" id="ejsbox">
+	        <div  style='height:50px;display:flex;align-items: center'>
+	            <div style="margin: 0 10px">
+	                <img  width="40px" src="<%=ret.showapi_res_body.f1.day_weather_pic%>">
+	            </div>
+	            <div style="font-size:12px;color:#800080">
+	                    <big>
+	                    <%=ret.showapi_res_body.cityInfo.c7%><%=ret.showapi_res_body.cityInfo.c5 %>
+	                    <%=ret.showapi_res_body.f1.day_weather %>
+	                    温度范围<%=ret.showapi_res_body.f1.night_air_temperature%>℃～<%=ret.showapi_res_body.f1.day_air_temperature%>℃
+	                    </big>
+	            </div>
+	        </div>
+	    </script>
+	<div id="main">
+		me
+	</div>
+	<div>
+		sdsd
+	</div>
+
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/ejs.min.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+		api.getLocation(function (ret, err) {
+			if (ret && ret.status) {
+				//获取位置信息成功
+				//addtianqi(ret.latitude, ret.longitude)
+				alert(JSON.stringify(ret));
+			} else {
+				alert(JSON.stringify(err));
+			}
+		});
+		//addtianqi()
 
-	
 	};
+
+	function addtianqi(gpslat, gpslon) {
+			api.ajax({
+				headers: {
+					'Authorization': 'APPCODE f48d189498f94aeab177b97404ff82ed'
+				},
+				url: 'http://saweather.market.alicloudapi.com/gps-to-weather?from=5&lat=' + gpslat + '&lng=' + gpslon + '&needIndex=0&needMoreDay=0',
+				method: 'get',
+				timeout: 10,
+				dataType: 'json',
+				returnAll: false
+			}, function (ret, err) {
+				if (ret) {
+					ejshtml = $api.html($api.dom('#ejsbox'));
+					html = ejs.render(ejshtml, { ret: ret });
+					$api.html($api.dom('#xinxibox'), html);
+				} else {
+					$api.html($api.dom('#xinxibox big'), '天气加载失败');
+					$api.remove($api.dom('#xinxibox .imgbox'));
+				}
+			})
+		}
 </script>
 
 </html>

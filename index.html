@@ -11,33 +11,33 @@
     <link rel="stylesheet" type="text/css" href="./css/aui.css" />
     <!-- <link rel="stylesheet" type="text/css" href="./css/public.css" /> -->
     <style type="text/css">
-        
+
     </style>
 </head>
 
 <body>
-    
-        
-        
-            <footer class="aui-bar aui-bar-tab">
-                <div class="aui-bar-tab-item aui-active" tapmode>
-                    <i class="aui-iconfont aui-icon-home"></i>
-                    <div class="aui-bar-tab-label">游戏</div>
-                </div>
-                <div class="aui-bar-tab-item" tapmode>
-                    <i class="aui-iconfont aui-icon-star"></i>
-                    <div class="aui-bar-tab-label">福利</div>
-                </div>
 
-                <div class="aui-bar-tab-item" tapmode>
-                    <div class="aui-dot"></div>
-                    <i class="aui-iconfont aui-icon-my"></i>
-                    <div class="aui-bar-tab-label">我的</div>
-                </div>
-            </footer>
-        
 
-    
+
+    <footer class="aui-bar aui-bar-tab">
+        <div class="aui-bar-tab-item aui-active" tapmode>
+            <i class="aui-iconfont aui-icon-home"></i>
+            <div class="aui-bar-tab-label">游戏</div>
+        </div>
+        <div class="aui-bar-tab-item" tapmode>
+            <i class="aui-iconfont aui-icon-star"></i>
+            <div class="aui-bar-tab-label">福利</div>
+        </div>
+
+        <div class="aui-bar-tab-item" tapmode>
+            <div class="aui-dot"></div>
+            <i class="aui-iconfont aui-icon-my"></i>
+            <div class="aui-bar-tab-label">我的</div>
+        </div>
+    </footer>
+
+
+
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
@@ -45,9 +45,9 @@
         var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
         //var headerPos = $api.offset(header);
-        var main = $api.byId('main');
+        // var main = $api.byId('main');
         // $api.fixStatusBar(header);
-        var mainPos = $api.offset(main);
+        // var mainPos = $api.offset(main);
         var gllis = $api.domAll('.aui-bar-tab-item');
         //切换点击
         var Group = {
@@ -77,6 +77,7 @@
                             index: i,
                             scroll: false
                         });
+                        
                         if (i == 0) {
                             // cj_group(root_shouye_Group, root_shouye_GroupHtml)
                             // showframe('group_name')
@@ -100,10 +101,10 @@
         // var root_me_GroupHtml = ['me']
         // cj_group(root_me_Group, root_me_GroupHtml)
         // cj_group(root_fuli_Group, root_fuli_GroupHtml)
-        
+
 
         // openheaderFrame(shouye_frames_name[0], HeaderHeight[0]);
-        
+
 
     }
 
@@ -131,14 +132,34 @@
             index: 0,
             frames: frames
         }, function (ret, err) {
+            hiddenheader(allheader)
+            showheader(allheader[ret.index])
             
+        })
+
+        
+        
+    }
+    var allheader=['shouye_header','fuli_header','me_header']
+//显示指定名称的frame
+    function showheader(name) {
+        api.setFrameAttr({
+            name: name,
+            hidden: false
         });
     }
+//隐藏header数组里的frame
+    function hiddenheader(header){
+        for (var index = 0; index < header.length; index++) {
+           api.setFrameAttr({
+               name: header[index],
+               hidden: true
+           });
+           
+        }
+        
+    }
 
-    
-
-
-    
 
 </script>
 

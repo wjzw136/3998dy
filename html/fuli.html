@@ -11,8 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
 	<link rel="stylesheet" type="text/css" href="../css/public.css" />
 	<style>
-		#main {
-			background-color: deeppink
+		#header{
+			height: 150px;
 		}
 	</style>
 </head>
@@ -20,7 +20,7 @@
 <body>
 	<div id="wrap">
 		<div id="header">
-
+			
 		</div>
 		<div id="main">
 			<section class="aui-grid">
@@ -79,7 +79,28 @@
 			}, 1000);
 
 		});
+		api.openFrame({
+			name: 'fuli_header',
+			url: './fuli_header.html',
+			bounces: true,
+			rect: {
+				x: 0,
+				y: 0,
+				w: 'auto',
+				h: $api.byId('header').offsetHeight
+			}
+		});
 
+
+
+		setTimeout(function(){
+			api.setFrameAttr({
+				name: 'fuli_header',
+				hidden: true
+			});
+		}, 300);
+		
+		
 		
 	};
 </script>
