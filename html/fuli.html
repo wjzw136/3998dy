@@ -11,16 +11,16 @@
 	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
 	<link rel="stylesheet" type="text/css" href="../css/public.css" />
 	<style>
-		#header{
+		#header {
 			height: 150px;
 		}
 	</style>
 </head>
 
 <body>
-	<div id="wrap">
+	
 		<div id="header">
-			
+
 		</div>
 		<div id="main">
 			<section class="aui-grid">
@@ -59,26 +59,86 @@
 					</div>
 				</div>
 			</section>
+
+			<div class="aui-card-list" style="margin-top:15px">
+				<div class="aui-card-list-header">
+					<div>sdsdsdad</div>
+					<div>222</div>
+				</div>
+				<div class=" aui-card-list-content-padded">
+					<div>sdsdsdad</div>
+					<div>222</div>
+				</div>
+				<div class="aui-card-list-footer">
+
+					<div>sdsdsdad</div>
+					<div>222</div>
+				</div>
+			</div>
+
+			<div class="aui-card-list">
+				<div class="aui-card-list-header">
+					<div>sdsdsdad</div>
+					<div>222</div>
+				</div>
+				<div class=" aui-card-list-content-padded">
+					<div>sdsdsdad</div>
+					<div>222</div>
+				</div>
+				<div class="aui-card-list-footer">
+
+					<div>sdsdsdad</div>
+					<div>222</div>
+				</div>
+			</div>
+			<div class="aui-card-list">
+				<div class="aui-card-list-header">
+					<div><i class="aui-iconfont aui-icon-my aui-text-danger"></i><span class="aui-text-danger">
+							最近联系人</span></div>
+					<i class="aui-iconfont aui-icon-more"></i>
+				</div>
+				<div class="aui-card-list-content">
+					<ul class="aui-list aui-media-list">
+						<li class="aui-list-item aui-list-item-middle">
+							<div class="aui-media-list-item-inner">
+								<div class="aui-list-item-media">
+									<img src="../../image/demo5.png" class="aui-img-round aui-list-img-sm">
+								</div>
+								<div class="aui-list-item-inner aui-list-item-arrow">
+									<div class="aui-list-item-text">
+										<div class="aui-list-item-title aui-font-size-14">AUI</div>
+										<div class="aui-list-item-right">08:00</div>
+									</div>
+									<div class="aui-list-item-text">
+										www.auicss.com
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="aui-list-item aui-list-item-middle">
+							<div class="aui-media-list-item-inner">
+								<div class="aui-list-item-media">
+									<img src="../../image/liulangnan.png" class="aui-img-round aui-list-img-sm">
+								</div>
+								<div class="aui-list-item-inner aui-list-item-arrow">
+									流浪男
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="aui-card-list-footer aui-text-center">
+					查看更多
+				</div>
+			</div>
 		</div>
 
-	</div>
+	
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
 	apiready = function () {
-		api.setRefreshHeaderInfo({
-			loadingImg: 'widget://image/refresh.png',
-			bgColor: '#ccc',
-			textColor: '#fff',
-			textDown: '下拉刷新...',
-			textUp: '松开刷新...'
-		}, function (ret, err) {
-			//在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
-			setTimeout(function () {
-				api.refreshHeaderLoadDone()
-			}, 1000);
 
-		});
 		api.openFrame({
 			name: 'fuli_header',
 			url: './fuli_header.html',
@@ -93,15 +153,15 @@
 
 
 
-		setTimeout(function(){
+		setTimeout(function () {
 			api.setFrameAttr({
 				name: 'fuli_header',
 				hidden: true
 			});
-		}, 300);
-		
-		
-		
+		}, 400);
+
+
+
 	};
 </script>
 

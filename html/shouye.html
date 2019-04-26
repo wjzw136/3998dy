@@ -11,92 +11,222 @@
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <link rel="stylesheet" type="text/css" href="../css/public.css" />
     <style>
-        #main {
-            height: 1500px;
+        .dh {
+            margin-top: 0px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            padding-top: 10px
         }
-        .lunbotubox{
+
+        .dh ul {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            display: -webkit-box;
+            display: -webkit-flex;
+        }
+
+        .dh ul li {
+            width: 20%;
+            text-align: center;
+            margin-bottom: 20px
+        }
+
+        .dh ul li div {
+            width: 100%;
+            font-size: 14px;
+            margin-top: 10px;
+
+        }
+
+        .dh ul li img {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border-radius: 50%
+        }
+
+        .lunbotubox {
             height: 200px;
         }
+
         #header {
             height: 50px;
             padding: 0px 20px;
             font-size: 20px;
             line-height: 50px;
-            background-color: black;
-            color: #fff;
+            color: #ff0000;
+        }
+
+        .aui-card-list-header {
+            color: #0080ff
         }
     </style>
 </head>
 
 <body>
-    
-        <div id="header">
-            文字腿
-        </div>
-        <div class="lunbotubox">
+
+    <div id="header">
+
+    </div>
+    <div class="lunbotubox">
+
+    </div>
+
+    <div class="aui-card-list">
+        <div class="aui-card-list-header">
+            <div>热门区域</div>
 
         </div>
-        <div id="main">
-            <div class="aui-content aui-margin-b-15">
-                <ul class="aui-list aui-media-list">
-                    <li class="aui-list-item">
-                        <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media">
-                                <img src="../image/5.jpg">
-                            </div>
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-text">
-                                    <div class="aui-list-item-title">带有媒体的列表二</div>
-            
-                                </div>
-                                <div class="aui-list-item-text">
-                                    在下方我们加入了aui-info信息条
-                                    在下方我们加入了aui-info信息条
-                                    在下方我们加入了aui-info信息条
-                                </div>
-                            </div>
-                        </div>
-                        <div class="aui-info" style="padding-top:0">
-                            <div class="aui-info-item">
-                                <img src="../../image/liulangnan.png" style="width:1rem" class="aui-img-round" /><span
-                                    class="aui-margin-l-5">流浪男</span>
-                            </div>
-                            <div class="aui-info-item">2015-07-14 10:31</div>
-                        </div>
-                    </li>
-                </ul>
+        <div class="dh">
+            <ul>
+                <li id="fjdiaodian">
+                    <img src="../image/3.jpg" alt="">
+                    <div>钓点</div>
+                </li>
+                <li id="diaochang">
+                    <img src="../image/4.jpg" alt="">
+                    <div>钓场</div>
+                </li>
+                <li id="yujudian">
+                    <img src="../image/5.jpg" alt="">
+                    <div>渔具店</div>
+                </li>
+                <li id="fjdiaodian">
+                    <img src="../image/3.jpg" alt="">
+                    <div>钓点</div>
+                </li>
+                <li id="diaochang">
+                    <img src="../image/4.jpg" alt="">
+                    <div>钓场</div>
+                </li>
+                <li id="yujudian">
+                    <img src="../image/5.jpg" alt="">
+                    <div>添加</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="aui-card-list">
+        <div class="aui-card-list-header">
+            <div>热门活动</div>
+            <div>更多</div>
+        </div>
+        <div class=" aui-card-list-content-padded aui-border-t">
+            <div class="aui-font-size-16">地下城与勇士-送时装</div>
+            <div>
+                2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送2019五一套免费送
             </div>
         </div>
-        <div>
-            sdsd
+        <div class="aui-card-list-footer">
+
+            <div>活动剩余时间：2019年4月26日16:31:48</div>
+            <div>222</div>
         </div>
-    
-    
+        <div class=" aui-card-list-content-padded aui-border-t">
+            <div class="aui-font-size-16">地下城与勇士-送时装</div>
 
+            <div>2019五一套免费送</div>
+        </div>
+        <div class="aui-card-list-footer">
 
+            <div>活动剩余时间：2019年4月26日16:31:48</div>
+            <div>222</div>
+        </div>
+    </div>
 
+    <div class="aui-card-list">
+        <div class="aui-card-list-header ">
+            <div>资讯</div>
+            <div>筛选</div>
+        </div>
+        <div class="aui-card-list-content">
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../image/1.jpg">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">带有媒体的列表二</div>
+                                <div class="aui-list-item-right">08:00</div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                这里是内容区域，新版中的列表布局可以很轻松的帮助开发者完成常见列表样式。
+                            </div>
+                            <div class="aui-info aui-margin-t-5" style="padding:0">
+                                <div class="aui-info-item">
+                                    <img src="../../image/liulangnan.png" style="width:1rem"
+                                        class="aui-img-round" /><span class="aui-margin-l-5">流浪男</span>
+                                </div>
+                                <div class="aui-info-item">2015-07-14 10:31</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../image/1.jpg">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">带有媒体的列表二</div>
+                                <div class="aui-list-item-right">08:00</div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                这里是内容区域，新版中的列表布局可以很轻松的帮助开发者完成常见列表样式。
+                            </div>
+                            <div class="aui-info aui-margin-t-5" style="padding:0">
+                                <div class="aui-info-item">
+                                    <img src="../../image/liulangnan.png" style="width:1rem"
+                                        class="aui-img-round" /><span class="aui-margin-l-5">流浪男</span>
+                                </div>
+                                <div class="aui-info-item">2015-07-14 10:31</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                            <img src="../image/1.jpg">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">带有媒体的列表二</div>
+                                <div class="aui-list-item-right">08:00</div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                这里是内容区域，新版中的列表布局可以很轻松的帮助开发者完成常见列表样式。
+                            </div>
+                            <div class="aui-info aui-margin-t-5" style="padding:0">
+                                <div class="aui-info-item">
+                                    <img src="../image/4.jpg" style="width:1rem;height: 1rem;"
+                                        class="aui-img-round" /><span class="aui-margin-l-5">流浪男</span>
+                                </div>
+                                <div class="aui-info-item">2015-07-14 10:31</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="aui-card-list-footer aui-text-center">
+            查看更多
+        </div>
+    </div>
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
     apiready = function () {
-        api.setRefreshHeaderInfo({
-            loadingImg: 'widget://image/refresh.png',
-            bgColor: '#ccc',
-            textColor: '#fff',
-            textDown: '下拉刷新...',
-            textUp: '松开刷新...'
-        }, function (ret, err) {
-            //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
-            setTimeout(function () {
-                api.refreshHeaderLoadDone()
-            }, 1000);
-        });
         var header = $api.byId('header');
         api.openFrame({
             name: 'shouye_header',
             url: './shouye_header.html',
-            bounces: true,
+            bounces: false,
             rect: {
                 x: 0,
                 y: 0,
@@ -106,60 +236,58 @@
         });
         getlunbotu()
     };
-    
+
 
     function getlunbotu() {
-            var UIScrollPicture = api.require('UIScrollPicture');
-            UIScrollPicture.open({
-                rect: {
-                    x: 0,
-                    y: $api.dom('.lunbotubox').offsetTop,
-                    w: api.winWidth,
-                    h: $api.dom('.lunbotubox').offsetHeight
+        var UIScrollPicture = api.require('UIScrollPicture');
+        UIScrollPicture.open({
+            rect: {
+                x: 0,
+                y: $api.dom('.lunbotubox').offsetTop,
+                w: api.winWidth,
+                h: $api.dom('.lunbotubox').offsetHeight
+            },
+            data: {
+                paths: [
+                    '../image/1.jpg',
+                    '../image/2.jpg',
+                    '../image/3.jpg',
+                    '../image/4.jpg'
+                ],
+                captions: []
+            },
+            styles: {
+                caption: {
+                    height: 30,
+                    color: '#6ab494',
+                    size: 14,
+                    bgColor: '#ffffff',
+                    position: 'bottom'
                 },
-                data: {
-                    paths: [
-                        '../image/1.jpg',
-                        '../image/2.jpg',
-                        '../image/3.jpg',
-                        '../image/4.jpg'
-                    ],
-                    captions: []
-                },
-                styles: {
-                    caption: {
-                        height: 30,
-                        color: '#6ab494',
-                        size: 14,
-                        bgColor: '#ffffff',
-                        position: 'bottom'
+                indicator: {
+                    dot: {
+                        w: 10,
+                        h: 10,
+                        r: 5,
+                        margin: 5
                     },
-                    indicator: {
-                        dot: {
-                            w: 10,
-                            h: 10,
-                            r: 5,
-                            margin: 5
-                        },
-                        align: 'center',
-                        color: '#FFFFFF',
-                        activeColor: '#DA70D6'
-                    }
-                },
-                placeholderImg: 'widget://res/slide1.jpg',
-                contentMode: 'scaleToFill',
-                interval: 3,
-                fixedOn: 'shouye',
-                loop: true,
-                fixed: false
-            }, function (ret, err) {
-                if (ret) {
-                    // alert(JSON.stringify(ret));
-                } else {
-                    // alert(JSON.stringify(err));
+                    align: 'center',
+                    color: '#FFFFFF',
+                    activeColor: '#DA70D6'
                 }
-            });
-        }
+            },
+            placeholderImg: 'widget://res/slide1.jpg',
+            contentMode: 'scaleToFill',
+            interval: 3,
+            fixedOn: 'shouye',
+            loop: true,
+            fixed: false
+        }, function (ret, err) {
+            if (ret.eventType == 'click') {
+                alert(ret.index)
+            }
+        });
+    }
 </script>
 
 </html>
