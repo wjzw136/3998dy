@@ -11,45 +11,131 @@
 	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
 	<link rel="stylesheet" type="text/css" href="../css/public.css" />
 	<style>
-		#main {
-
-			height: 1500px;
+		#header {
+			font-size: 20px;
+			/* background-image: url(../image/7.png); */
+			background-color: #66CCFF;
+			color: #fff;
+			padding:0 15px;
+			width: 100%;
+			padding-top: 15px;
+			
 		}
 	</style>
 </head>
 
 <body>
-
 	<div id="header">
+		<div class="flex_box_space_between">
+			<div class="flex_box" style="flex-shrink: 1;overflow: hidden;">
+				<div style="width:60px;height:60px;flex-shrink: 0;">
+					<img src="../image/4.jpg" width="100%" height="100%" style="border-radius: 50%" alt="" srcset="">
+				</div>
+				<div style="flex-shrink: 1;margin-left:15px">
+					<div>
+						sdsddsassssssssssssssssssssssssssssssssssssssssssssss
+					</div>
+					<div>ssssssss</div>
+				</div>
+			</div>
+			<div style="flex-shrink: 0;margin-left: 15px;"><i class="aui-iconfont aui-icon-gear" style="font-size: 30px"></i></div>
+		</div>
+
+		<section class="aui-content aui-grid ">
+			<div class="aui-row">
+				<div class="aui-col-xs-4">
+					<big class="aui-text-warning">100
+						<small> 元</small>
+					</big>
+					<div class="aui-gird-lable aui-font-size-12">余sssss额</div>
+				</div>
+				<div class="aui-col-xs-4 ">
+					<big class="aui-text-danger">2
+						<small> 个</small>
+					</big>
+					<div class="aui-gird-lable aui-font-size-12">优惠</div>
+				</div>
+				<div class="aui-col-xs-4">
+					<big class="aui-text-success">200
+						<small> 分</small>
+					</big>
+					<div class="aui-gird-lable aui-font-size-12">积分</div>
+				</div>
+			</div>
+		</section>
+
+
 
 	</div>
-	<div id="xinxibox" class="tqbox">
-		<div style='height:50px;display: flex;align-items: center'>
-			<div class="imgbox" style="margin: 0 10px">
-				<img width="20px" src="../image/loading_more.gif">
+
+	<div id="main">
+		<section class="aui-grid" style="background-color: #fff">
+			<div class="aui-row">
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-home"></i>
+					<div class="aui-grid-label">首页</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-gear"></i>
+					<div class="aui-grid-label">设置</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-map"></i>
+					<div class="aui-grid-label">地图</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-calendar"></i>
+					<div class="aui-grid-label">日历</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-date"></i>
+					<div class="aui-grid-label">日期</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-cart"></i>
+					<div class="aui-grid-label">购物车</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-paper"></i>
+					<div class="aui-grid-label">发现</div>
+				</div>
+				<div class="aui-col-xs-3">
+					<i class="aui-iconfont aui-icon-video"></i>
+					<div class="aui-grid-label">视频</div>
+				</div>
 			</div>
-			<div style="font-size:12px;color:#ffffff">
-				<big>正在加载天气</big>
-			</div>
+		</section>
+		<div class="aui-content aui-margin-b-10 aui-margin-t-15 " style="background-color: #fff">
+			<ul class="aui-list aui-list-in">
+				<!-- <li class="aui-list-header">带有图标、底线缩进</li> -->
+				<li class="aui-list-item">
+					<div class="aui-list-item-label-icon">
+						<i class="aui-iconfont aui-icon-home"></i>
+					</div>
+					<div class="aui-list-item-inner">
+						这是一个列表项
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-label-icon">
+						<i class="aui-iconfont aui-icon-edit"></i>
+					</div>
+					<div class="aui-list-item-inner">
+						这是一个列表项
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-list-item-label-icon">
+						<i class="aui-iconfont aui-icon-camera"></i>
+					</div>
+					<div class="aui-list-item-inner">
+						这是一个列表项
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
-	<script type="text/template" id="ejsbox">
-	        <div  style='height:50px;display:flex;align-items: center'>
-	            <div style="margin: 0 10px">
-	                <img  width="40px" src="<%=ret.showapi_res_body.f1.day_weather_pic%>">
-	            </div>
-	            <div style="font-size:12px;color:#800080">
-	                    <big>
-	                    <%=ret.showapi_res_body.cityInfo.c7%><%=ret.showapi_res_body.cityInfo.c5 %>
-	                    <%=ret.showapi_res_body.f1.day_weather %>
-	                    温度范围<%=ret.showapi_res_body.f1.night_air_temperature%>℃～<%=ret.showapi_res_body.f1.day_air_temperature%>℃
-	                    </big>
-	            </div>
-	        </div>
-	    </script>
-	<div id="main">
-		me
-	</div>
+
 	<div>
 		sdsd
 	</div>
@@ -71,28 +157,6 @@
 		//addtianqi()
 
 	};
-
-	function addtianqi(gpslat, gpslon) {
-			api.ajax({
-				headers: {
-					'Authorization': 'APPCODE f48d189498f94aeab177b97404ff82ed'
-				},
-				url: 'http://saweather.market.alicloudapi.com/gps-to-weather?from=5&lat=' + gpslat + '&lng=' + gpslon + '&needIndex=0&needMoreDay=0',
-				method: 'get',
-				timeout: 10,
-				dataType: 'json',
-				returnAll: false
-			}, function (ret, err) {
-				if (ret) {
-					ejshtml = $api.html($api.dom('#ejsbox'));
-					html = ejs.render(ejshtml, { ret: ret });
-					$api.html($api.dom('#xinxibox'), html);
-				} else {
-					$api.html($api.dom('#xinxibox big'), '天气加载失败');
-					$api.remove($api.dom('#xinxibox .imgbox'));
-				}
-			})
-		}
 </script>
 
 </html>
