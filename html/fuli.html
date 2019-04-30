@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/api.css" />
 	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
 	<link rel="stylesheet" type="text/css" href="../css/public.css" />
+
 	<style>
 		#header {
 			height: 137px;
@@ -24,7 +25,7 @@
 	</div>
 	<div id="main">
 
-		
+
 		<div class="aui-card-list" style="margin-top:10px">
 			<div class="aui-card-list-header">
 				<div>sdsdsdad</div>
@@ -55,6 +56,35 @@
 				<div>sdsdsdad</div>
 				<div>222</div>
 			</div>
+		</div>
+
+
+		<div class="aui-card-list-content">
+			<ul class="aui-list aui-media-list" id="example-1">
+				<li v-for="item in data1" class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media">
+							<img src="../image/1.jpg">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">{{ item.id }}</div>
+								<div class="aui-list-item-right">{{ item.time }}</div>
+							</div>
+							<div class="aui-list-item-text">
+								{{ item.neirong }}
+							</div>
+							<div class="aui-info aui-margin-t-5" style="padding:0">
+								<div class="aui-info-item">
+									<img src="../../image/liulangnan.png" style="width:1rem"
+										class="aui-img-round" /><span class="aui-margin-l-5">流浪男</span>
+								</div>
+								<div class="aui-info-item">{{ item.time }}</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 		<div class="aui-card-list">
 			<div class="aui-card-list-header">
@@ -97,10 +127,9 @@
 			</div>
 		</div>
 	</div>
-
-
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
 <script type="text/javascript">
 	apiready = function () {
 
@@ -115,9 +144,40 @@
 				h: $api.byId('header').offsetHeight
 			}
 		});
+		var example1 = new Vue({
+			el: '#example-1',
+			data: {
+				data1: [
+					{
+						"id": 32,
+						"biaoti": "企业文化",
+						"neirong": "jskdskadsd",
+						"time": "2018-05-22,11:21:0",
+						"user": "admin",
+						"biaoqian": "幻神"
+					}, {
+						"id": 33,
+						"biaoti": "企业文化",
+						"neirong": "jskdskadsd",
+						"time": "2018-05-22,11:21:0",
+						"user": "admin",
+						"biaoqian": "幻神"
+					}, {
+						"id": 34,
+						"biaoti": "企业文化",
+						"neirong": "jskdskadsd",
+						"time": "2018-05-22,11:21:0",
+						"user": "admin",
+						"biaoqian": "幻神"
+					},
+				]
+			}
+		})
 
-
-
+		setTimeout(function () {
+			console.log('gaibian');
+		
+		}, 8000);
 		setTimeout(function () {
 			api.setFrameAttr({
 				name: 'fuli_header',
