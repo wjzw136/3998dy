@@ -12,11 +12,15 @@
     <link rel="stylesheet" type="text/css" href="../css/public.css" />
 
     <style>
-        
+        .lunbotubox {
+            height: 200px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="lunbotubox">
+    </div>
     <div id="main">
         <div id="sjd">
             <div v-for="item in data1" class="aui-card-list">
@@ -45,9 +49,11 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/vue.js"></script>
+<script type="text/javascript" src="../script/public.js"></script>
+
 <script type="text/javascript">
     apiready = function () {
-        
+        getlunbotu()
         var data1 = [
             {
                 "id": 32,
@@ -151,6 +157,57 @@
         })
         
     };
+
+    function getlunbotu() {
+            var UIScrollPicture = api.require('UIScrollPicture');
+            UIScrollPicture.open({
+                rect: {
+                    x: 0,
+                    y: $api.dom('.lunbotubox').offsetTop,
+                    w: api.winWidth,
+                    h: $api.dom('.lunbotubox').offsetHeight
+                },
+                data: {
+                    paths: [
+                        '../image/1.jpg',
+                        '../image/2.jpg',
+                        '../image/3.jpg',
+                        '../image/4.jpg'
+                    ],
+                    captions: []
+                },
+                styles: {
+                    caption: {
+                        height: 30,
+                        color: '#6ab494',
+                        size: 14,
+                        bgColor: '#ffffff',
+                        position: 'bottom'
+                    },
+                    indicator: {
+                        dot: {
+                            w: 10,
+                            h: 10,
+                            r: 5,
+                            margin: 5
+                        },
+                        align: 'center',
+                        color: '#FFFFFF',
+                        activeColor: '#DA70D6'
+                    }
+                },
+                placeholderImg: 'widget://res/slide1.jpg',
+                contentMode: 'scaleToFill',
+                interval: 3,
+                fixedOn: 'FL_dnf',
+                loop: true,
+                fixed: false
+            }, function (ret, err) {
+                if (ret.eventType == 'click') {
+                    alert(ret.index)
+                }
+            });
+        }
 </script>
 
 </html>

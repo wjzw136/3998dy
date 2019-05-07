@@ -10,38 +10,55 @@
 	<link rel="stylesheet" type="text/css" href="../css/api.css" />
 
 	<style>
-		
+
 	</style>
 </head>
 
 <body>
-	
+
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/public.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+
+		var SY_GroupHtml = ['ME_main'];
+		cj_group(Group.ME_BOX.Group, SY_GroupHtml);
+
+
+
 		setTimeout(function () {
 			hiddenframegroup([Group.FL_BOX.header, Group.ME_BOX.header], [Group.FL_BOX.Group, Group.ME_BOX.Group])
 		}, 500);
-		
+
 	};
-	function hiddenframegroup(frame, framegroup) {
-			for (var i = 0; i < frame.length; i++) {
-				api.setFrameAttr({
-					name: frame[i],
-					hidden: true
-				});
 
-			}
-			for (var i = 0; i < framegroup.length; i++) {
-				api.setFrameGroupAttr({
-					name: framegroup[i],
-					hidden: true
-				});
-
-			}
+	function cj_group(GroupName, FramesName) {
+		var frames = [];
+		for (var i = 0, len = FramesName.length; i < len; i++) {
+			frames.push({
+				name: FramesName[i],
+				url: './' + FramesName[i] + '.html',
+				bounces: false
+			})
 		}
+		api.openFrameGroup({
+			name: GroupName,
+			scrollEnabled: false,
+			rect: {
+				x: 0,
+				y: 0,
+				w: api.winWidth,
+				h: api.winHeight - 50 - 55
+			},
+			preload: FramesName.length,
+			index: 0,
+			frames: frames
+		}, function (ret, err) {
+		})
+
+	}
+
 </script>
 
 </html>

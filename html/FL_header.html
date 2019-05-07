@@ -13,7 +13,7 @@
     <style>
         .dh {
             margin-top: 0px;
-            background-color: #66CCFF;
+            background-color: #ff8000;
             padding-top: 20px
         }
 
@@ -94,34 +94,38 @@
                 <div class="bt">添加</div>
             </li>
         </ul>
-        
+
     </div>
 
 
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/public.js"></script>
+
 <script type="text/javascript">
     apiready = function () {
         var dh_li = $api.domAll('.dh ul li');
         Array.prototype.forEach.call(dh_li, function (btn) {
             btn.addEventListener('click', function (event) {
-                for (var index = 0; index < dh_li.length; index++) {
-                    $api.css($api.dom(dh_li[index], '.imgbox'), 'border-color:#fff');
-                    $api.css($api.dom(dh_li[index], '.bt'), 'color:#fff');
-                }
-                $api.css($api.dom(btn, '.imgbox'), 'border-color:orange');
-                $api.css($api.dom(btn, 'div:last-child'), 'color:orange');
                 var getid = event.currentTarget.getAttribute('paixu');
-                api.setFrameGroupIndex({
-                    name: 'FL_Group',
-                    index: getid
-                });
+                if (getid == 4) {
+                    alert('添加')
+                } else {
+                    for (var index = 0; index < dh_li.length; index++) {
+                        $api.css($api.dom(dh_li[index], '.imgbox'), 'border-color:#fff');
+                        $api.css($api.dom(dh_li[index], '.bt'), 'color:#fff');
+                    }
+                    $api.css($api.dom(btn, '.imgbox'), 'border-color:orange');
+                    $api.css($api.dom(btn, 'div:last-child'), 'color:orange');
+                    api.setFrameGroupIndex({
+                        name: Group.FL_BOX.Group,
+                        index: getid
+                    });
+                }
             })
         })
-        // setTimeout(function(){
-        //     alert($api.offset($api.byId('dh')).h)
-        // }, 3000);
+        
     }
 </script>
 
