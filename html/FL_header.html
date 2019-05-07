@@ -58,9 +58,10 @@
             border: #fff 3px solid;
             overflow: hidden;
         }
-        .sss{
-            color:orange
-                    }
+
+        .sss {
+            color: orange
+        }
     </style>
 </head>
 
@@ -69,31 +70,31 @@
 
     <div id="dh" class="dh">
         <ul>
-            <li id="fjdiaodian">
-                <div class="imgbox"> <img src="../image/3.jpg" alt=""></div>
-                <div class="bt">DNF</div>
+            <li id="zonghe" paixu='0'>
+                <div class="imgbox"> <img src="../image/loading_more.gif" alt=""></div>
+                <div class="bt">综合</div>
             </li>
-            <li id="diaochang">
-                <div class="imgbox"> <img src="../image/3.jpg" alt=""></div>
+            <li id="mhxy" paixu='1'>
+                <div class="imgbox"> <img src="../image/loading_more.gif" alt=""></div>
                 <div class="bt">梦幻西游</div>
-                
+
             </li>
-            <li id="yujudian">
-                <div class="imgbox"> <img src="../image/3.jpg" alt=""></div>
+            <li id="yxlm" paixu='2'>
+                <div class="imgbox"> <img src="../image/loading_more.gif" alt=""></div>
                 <div class="bt">英雄联盟</div>
-                
+
             </li>
-            <li id="fjdiaodian">
-                <div class="imgbox"> <img src="../image/3.jpg" alt=""></div>
+            <li id="cyhx" paixu='3'>
+                <div class="imgbox"> <img src="../image/loading_more.gif" alt=""></div>
                 <div class="bt">穿越火线</div>
-                
+
             </li>
-            <li id="fjdiaodian">
-                <div class="imgbox"> <img src="../image/3.jpg" alt=""></div>
-                <div class="bt">渔具店</div>
-                
+            <li id="tj" paixu='4'>
+                <div class="imgbox"> <img src="../image/loading_more.gif" alt=""></div>
+                <div class="bt">添加</div>
             </li>
         </ul>
+        
     </div>
 
 
@@ -102,18 +103,20 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
     apiready = function () {
-
         var dh_li = $api.domAll('.dh ul li');
-
         Array.prototype.forEach.call(dh_li, function (btn) {
             btn.addEventListener('click', function (event) {
-               
                 for (var index = 0; index < dh_li.length; index++) {
                     $api.css($api.dom(dh_li[index], '.imgbox'), 'border-color:#fff');
                     $api.css($api.dom(dh_li[index], '.bt'), 'color:#fff');
                 }
                 $api.css($api.dom(btn, '.imgbox'), 'border-color:orange');
                 $api.css($api.dom(btn, 'div:last-child'), 'color:orange');
+                var getid = event.currentTarget.getAttribute('paixu');
+                api.setFrameGroupIndex({
+                    name: 'FL_Group',
+                    index: getid
+                });
             })
         })
         // setTimeout(function(){

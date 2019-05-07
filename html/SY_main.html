@@ -11,20 +11,9 @@
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <link rel="stylesheet" type="text/css" href="../css/public.css" />
     <style>
-       
-
         .lunbotubox {
             height: 200px;
         }
-
-        #header {
-            height: 50px;
-            padding: 0px 20px;
-            font-size: 20px;
-            line-height: 50px;
-            color: #ff0000;
-        }
-
         .aui-card-list-header {
             color: #0080ff
         }
@@ -32,15 +21,8 @@
 </head>
 
 <body>
-
-    <div id="header">
-
-    </div>
     <div class="lunbotubox">
-
     </div>
-
-    
     <div class="aui-card-list">
         <div class="aui-card-list-header">
             <div>热门活动</div>
@@ -156,18 +138,6 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
     apiready = function () {
-        var header = $api.byId('header');
-        api.openFrame({
-            name: 'shouye_header',
-            url: './shouye_header.html',
-            bounces: false,
-            rect: {
-                x: 0,
-                y: 0,
-                w: 'auto',
-                h: $api.byId('header').offsetHeight
-            }
-        });
         getlunbotu()
     };
 
@@ -213,7 +183,7 @@
             placeholderImg: 'widget://res/slide1.jpg',
             contentMode: 'scaleToFill',
             interval: 3,
-            fixedOn: 'shouye',
+            fixedOn: 'SY_main',
             loop: true,
             fixed: false
         }, function (ret, err) {

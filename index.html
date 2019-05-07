@@ -16,9 +16,6 @@
 </head>
 
 <body>
-
-
-
     <footer class="aui-bar aui-bar-tab">
         <div class="aui-bar-tab-item aui-active" tapmode>
             <i class="aui-iconfont aui-icon-home"></i>
@@ -28,19 +25,17 @@
             <i class="aui-iconfont aui-icon-star"></i>
             <div class="aui-bar-tab-label">福利</div>
         </div>
-
         <div class="aui-bar-tab-item" tapmode>
             <div class="aui-dot"></div>
             <i class="aui-iconfont aui-icon-my"></i>
             <div class="aui-bar-tab-label">我的</div>
         </div>
     </footer>
-
-
-
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/public.js"></script>
 <script type="text/javascript">
+    
     apiready = function () {
         var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
@@ -50,20 +45,7 @@
         // var mainPos = $api.offset(main);
         var gllis = $api.domAll('.aui-bar-tab-item');
         //切换点击
-        var Group = {
-            'root_shouye_Group': {
-                'shouye': 'shouye',
-                'fuli': 'fuli',
-                'me': 'me'
-            },
-            'root_fuli_Group': {
-                'x': '1',
-                'y': '2',
-                'z': '3'
-            },
-            'me': 'me'
 
-        }
         Array.prototype.forEach.call(gllis, function (btn) {
             btn.addEventListener('click', function (event) {
                 var index = 0;
@@ -73,11 +55,11 @@
                         // openheaderFrame(shouye_frames_name[index], HeaderHeight[index]);
                         $api.addCls(gllis[index], 'aui-active');
                         api.setFrameGroupIndex({
-                            name: 'root_shouye_Group',
+                            name: root_Group,
                             index: i,
                             scroll: false
                         });
-                        
+
                         if (i == 0) {
                             // cj_group(root_shouye_Group, root_shouye_GroupHtml)
                             // showframe('group_name')
@@ -92,20 +74,9 @@
                 }
             })
         })
-        var root_shouye_Group = 'root_shouye_Group'
-        var root_shouye_GroupHtml = ['shouye', 'fuli', 'me']
-        cj_group(root_shouye_Group, root_shouye_GroupHtml)
-        // var root_fuli_Group = 'root_fuli_Group'
-        // var root_fuli_GroupHtml = ['1', '2', '3']
-        // var root_me_Group = 'root_me_Group'
-        // var root_me_GroupHtml = ['me']
-        // cj_group(root_me_Group, root_me_GroupHtml)
-        // cj_group(root_fuli_Group, root_fuli_GroupHtml)
-
-
-        // openheaderFrame(shouye_frames_name[0], HeaderHeight[0]);
-
-
+        var root_Group = 'root_Group'
+        var root_shouye_GroupHtml = ['SY_BOX', 'FL_BOX', 'ME_BOX']
+        cj_group(root_Group, root_shouye_GroupHtml)
     }
 
 
@@ -131,33 +102,21 @@
             index: 0,
             frames: frames
         }, function (ret, err) {
-            hiddenheader(allheader)
-            showheader(allheader[ret.index])
-            
+            if (ret.index == 0) {
+                hiddenframegroup([Group.FL_BOX.header, Group.ME_BOX.header], [Group.FL_BOX.Group, Group.ME_BOX.Group])
+                showframegroup([Group.SY_BOX.header], [Group.SY_BOX.Group])
+            } else if (ret.index == 1) {
+                hiddenframegroup([Group.SY_BOX.header, Group.ME_BOX.header], [Group.SY_BOX.Group, Group.ME_BOX.Group])
+                showframegroup([Group.FL_BOX.header], [Group.FL_BOX.Group])
+            } else if (ret.index == 2) {
+                hiddenframegroup([Group.FL_BOX.header, Group.SY_BOX.header], [Group.FL_BOX.Group, Group.SY_BOX.Group])
+                showframegroup([Group.ME_BOX.header], [Group.ME_BOX.Group])
+            }
+
         })
 
-        
-        
     }
-    var allheader=['shouye_header','fuli_header','me_header']
-//显示指定名称的frame
-    function showheader(name) {
-        api.setFrameAttr({
-            name: name,
-            hidden: false
-        });
-    }
-//隐藏header数组里的frame
-    function hiddenheader(header){
-        for (var index = 0; index < header.length; index++) {
-           api.setFrameAttr({
-               name: header[index],
-               hidden: true
-           });
-           
-        }
-        
-    }
+    
 
 
 </script>
