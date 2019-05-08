@@ -707,7 +707,7 @@ button, .aui-btn {
 }
 .aui-btn-outlined {
 	background: transparent !important;
-	border: 1px solid #bdbdbd;
+	border: 1px solid #ffffff;
 }
 .aui-btn-outlined:active {
 	background: transparent !important;
