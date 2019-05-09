@@ -32,7 +32,7 @@
 				</div>
 				<div style="padding:0 15px;width: 100%;">
 					<div>故事就到这</div>
-					<div>ssssssss</div>
+					<div>LV 5</div>
 				</div>
 				<div style="flex-shrink:0;padding: 0 15px">
 					<div class="aui-btn aui-btn-outlined">
@@ -44,7 +44,7 @@
 				<i class="aui-iconfont aui-icon-gear" style="font-size: 30px"></i>
 			</div>
 		</div>
-		<div class="flex_box_space_between" style="padding: 15px 0">
+		<div class="flex_box_space_around" style="padding: 15px 0">
 			<div style="text-align: center">
 				<big class="aui-text-warning">
 					100<small> 元</small>
@@ -57,15 +57,13 @@
 				</big>
 				<div class="aui-gird-lable aui-font-size-12">卡包</div>
 			</div>
-			<div style="text-align: center">
+			<div id="jifen" style="text-align: center">
 				<big class="aui-text-success">
 					2000000<small> 分</small>
 				</big>
 				<div class="aui-gird-lable aui-font-size-12">积分</div>
 			</div>
-			<div class="aui-btn aui-btn-outlined">
-				赚积分
-			</div>
+			
 		</div>
 	</div>
 
@@ -77,8 +75,10 @@
 		</div>
 		<div class="aui-card-list-content aui-border-t" style="padding:0 15px">
 			<div class="aui-row">
-				<div class="aui-col-xs-5">手机充值</div>
-				<div class="aui-col-xs-5">应用下载</div>
+				<div class="aui-col-xs-6">手机充值</div>
+				<div class="aui-col-xs-6">应用下载</div>
+				<div class="aui-col-xs-6">游戏充值</div>
+				<div class="aui-col-xs-6">应用下载</div>
 			</div>
 		</div>
 	</div>
@@ -183,7 +183,14 @@
 			}
 		});
 		//addtianqi()
-
+		$api.addEvt($api.byId('jifen'), 'click',function(){
+			api.openWin({
+				name: 'jifen',
+				url: './ME_jifen.html',
+				bounces: false,
+				pageParam: {key : 'value'}
+			});
+		});
 	};
 </script>
 

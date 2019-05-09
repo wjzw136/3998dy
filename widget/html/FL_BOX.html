@@ -20,7 +20,7 @@
 		api.openFrame({
 			name: 'FL_header',
 			url: './FL_header.html',
-			bounces: true,
+			bounces: false,
 			rect: {
 				x: 0,
 				y: 0,
@@ -50,7 +50,7 @@
 				w: api.winWidth,
 				h: api.winHeight - 55-137
 			},
-			preload: FramesName.length,
+			preload: FramesName.length-1,
 			index: 0,
 			frames: frames
 		}, function (ret, err) {

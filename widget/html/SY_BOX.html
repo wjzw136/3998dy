@@ -8,10 +8,14 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <style>
+        body,html{
+            background-color: transparent
+        }
+    </style>
 </head>
 
 <body>
-
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
@@ -21,7 +25,7 @@
         api.openFrame({
             name: 'SY_header',
             url: './SY_header.html',
-            bounces: true,
+            bounces: false,
             rect: {
                 x: 0,
                 y: 0,
@@ -34,6 +38,10 @@
         setTimeout(function(){
             hiddenframegroup([Group.FL_BOX.header, Group.ME_BOX.header], [Group.FL_BOX.Group, Group.ME_BOX.Group])
         }, 500);
+
+        api.bringFrameToFront({
+            from:'SY_header',
+        });
     }
 
     function cj_group(GroupName, FramesName) {
@@ -50,9 +58,9 @@
             scrollEnabled: false,
             rect: {
                 x: 0,
-                y: 50,
+                y: 0,
                 w: api.winWidth,
-                h: api.winHeight - 50-55
+                h: api.winHeight-55
             },
             preload: FramesName.length,
             index: 0,
