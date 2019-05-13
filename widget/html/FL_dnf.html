@@ -38,7 +38,7 @@
                     </div>
                     <div
                         style="width:45%;border-radius:5px ;height: 80px;background-image: url(../image/4.jpg);background-repeat: no-repeat;background-size: 100%">
-        
+
                         <div style="z-index: 100">
                             ksjdadsdsadsadasdsaddasdasd是的撒多撒多撒大所多
                         </div>
@@ -49,7 +49,7 @@
 
         <div id="sjd">
             <div v-for="item in data1" :dataid='item.id' class="aui-card-list">
-                <div class="aui-card-list-header" >
+                <div class="aui-card-list-header">
                     <div>{{ item.biaoti }}</div>
                     <div style="color:rgb(30, 141, 8)"><span class="aui-font-size-14">积分：</span> {{ item.jifen }}</div>
                 </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        
+
     </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
@@ -82,8 +82,8 @@
         var data1 = [
             {
                 "id": 32,
-                "biaoti": "科技时代开始骄傲的",
-                "neirong": "深刻了解到拉萨到家啦斯柯达sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+                "biaoti": "DNF夏日礼包更行了",
+                "neirong": "活动期间，Lv17及以上的勇士可以通过赛丽亚房间专属活动NPC疯疯熊和幻鬼之剑进入剧情地下城。每个账号每日可以进入剧情地下城1次，入场次数于次日06: 00重置；每周最多进入4次，每周累计入场次数于周四06: 00重置。随着剧情地下城通关，可以获得对应的奖励道具。",
                 "time": "2018-05-22,11:21:0",
                 "user": "admin",
                 "biaoqian": "幻神",
@@ -173,7 +173,7 @@
             },
         ]
 
-        
+
         var example1 = new Vue({
             el: '#sjd',
             data: {
@@ -191,11 +191,11 @@
                     name: 'FL_yx_nr',
                     url: './FL_yx_nr.html',
                     bounces: false,
-                    pageParam: { dataid : getid}
+                    pageParam: { dataid: getid }
                 });
             })
         })
-        
+
     };
 
 
@@ -204,55 +204,55 @@
 
 
     function getlunbotu() {
-            var UIScrollPicture = api.require('UIScrollPicture');
-            UIScrollPicture.open({
-                rect: {
-                    x: 0,
-                    y: $api.dom('.lunbotubox').offsetTop,
-                    w: api.winWidth,
-                    h: $api.dom('.lunbotubox').offsetHeight
+        var UIScrollPicture = api.require('UIScrollPicture');
+        UIScrollPicture.open({
+            rect: {
+                x: 0,
+                y: $api.dom('.lunbotubox').offsetTop,
+                w: api.winWidth,
+                h: $api.dom('.lunbotubox').offsetHeight
+            },
+            data: {
+                paths: [
+                    '../image/1.jpg',
+                    '../image/2.jpg',
+                    '../image/3.jpg',
+                    '../image/4.jpg'
+                ],
+                captions: []
+            },
+            styles: {
+                caption: {
+                    height: 30,
+                    color: '#6ab494',
+                    size: 14,
+                    bgColor: '#ffffff',
+                    position: 'bottom'
                 },
-                data: {
-                    paths: [
-                        '../image/1.jpg',
-                        '../image/2.jpg',
-                        '../image/3.jpg',
-                        '../image/4.jpg'
-                    ],
-                    captions: []
-                },
-                styles: {
-                    caption: {
-                        height: 30,
-                        color: '#6ab494',
-                        size: 14,
-                        bgColor: '#ffffff',
-                        position: 'bottom'
+                indicator: {
+                    dot: {
+                        w: 10,
+                        h: 10,
+                        r: 5,
+                        margin: 5
                     },
-                    indicator: {
-                        dot: {
-                            w: 10,
-                            h: 10,
-                            r: 5,
-                            margin: 5
-                        },
-                        align: 'center',
-                        color: '#FFFFFF',
-                        activeColor: '#DA70D6'
-                    }
-                },
-                placeholderImg: 'widget://res/slide1.jpg',
-                contentMode: 'scaleToFill',
-                interval: 3,
-                fixedOn: 'FL_dnf',
-                loop: true,
-                fixed: false
-            }, function (ret, err) {
-                if (ret.eventType == 'click') {
-                    alert(ret.index)
+                    align: 'center',
+                    color: '#FFFFFF',
+                    activeColor: '#DA70D6'
                 }
-            });
-        }
+            },
+            placeholderImg: 'widget://res/slide1.jpg',
+            contentMode: 'scaleToFill',
+            interval: 3,
+            fixedOn: 'FL_dnf',
+            loop: true,
+            fixed: false
+        }, function (ret, err) {
+            if (ret.eventType == 'click') {
+                alert(ret.index)
+            }
+        });
+    }
 </script>
 
 </html>
