@@ -20,6 +20,17 @@
 <script type="text/javascript" src="../script/public.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+		api.openFrame({
+			name: 'ME_header',
+			url: './ME_header.html',
+			bounces: false,
+			rect: {
+				x: 0,
+				y: 0,
+				w: 'auto',
+				h: 80
+			}
+		});
 
 		var SY_GroupHtml = ['ME_main'];
 		cj_group(Group.ME_BOX.Group, SY_GroupHtml);
@@ -46,9 +57,9 @@
 			scrollEnabled: false,
 			rect: {
 				x: 0,
-				y: 0,
+				y: 80,
 				w: api.winWidth,
-				h: api.winHeight - 50 - 55
+				h: api.winHeight - 55-80
 			},
 			preload: FramesName.length,
 			index: 0,
