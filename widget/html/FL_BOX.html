@@ -25,12 +25,10 @@
 				x: 0,
 				y: 0,
 				w: 'auto',
-				h: 137+50
+				h: Group.FL_BOX.headerh
 			}
 		});
-		
 		cj_group(Group.FL_BOX.Group, FL_GroupHtml);
-		
 	}
 	function cj_group(GroupName, FramesName) {
 		var frames = [];
@@ -48,7 +46,7 @@
 				x: 0,
 				y: 137+50,
 				w: api.winWidth,
-				h: api.winHeight - 55-137-50
+				h: api.winHeight - 55- Group.FL_BOX.headerh
 			},
 			preload: FramesName.length-1,
 			index: 0,

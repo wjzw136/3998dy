@@ -113,50 +113,46 @@
             },
             styles: {
                 orientation: 'horizontal',
-                bg: '#6b6b6b',
+                bg: '#ff8000',
                 bgAlpha: 1,
                 font: {
-                    size: 14,
-                    sizeSelected: 18,
-                    color: '#FFFFFF',
-                    colorSelected: '#ff0000',
+                    size: 18,
+                    sizeSelected: 20,
+                    color: '#ffffff',
+                    colorSelected: '#E44F26',
                     alpha: 1
                 },
                 itemSize: {
-                    w: 90,
+                    w: api.frameWidth/5.5,
                     h: 50
                 }
             },
             items: [{
-                title: '标题一',
-                bg: '#FFE7BA',
-                bgSelected: '#ff00000'
+                title: '资讯',
+                bg: '#ff8000',
+                bgSelected: '#ffffff'
             }, {
-                title: '标题二',
-                bg: '#FFE1FF',
-                bgSelected: '#FFA500'
+                title: '福利',
+                bg: '#ff8000',
+                bgSelected: '#ffffff'
             }, {
-                title: '标题三',
-                bg: '#FFAEB9',
-                bgSelected: '#FFA500'
-            }, {
-                title: '标题四',
-                bg: '#CDCD00',
-                bgSelected: '#FFA500'
-            }, {
-                title: '标题五',
-                bg: '#BBFFFF',
-                bgSelected: '#FFA500'
-            }, {
-                title: '标题六',
-                bg: '#436EEE',
-                bgSelected: '#FFA500'
-            }],
-            selectedIndex: 1,
+                    title: '福利',
+                    bg: '#ff8000',
+                    bgSelected: '#ffffff'
+                }, {
+                    title: '福利',
+                    bg: '#ff8000',
+                    bgSelected: '#ffffff'
+                }, {
+                    title: '福利',
+                    bg: '#ff8000',
+                    bgSelected: '#ffffff'
+                }],
+            selectedIndex: 0,
             fixedOn: api.frameName,
             id: 'first'
         }, function (ret, err) {
-            api.alert({ msg: JSON.stringify(ret) });
+           
         });
 
 
@@ -181,7 +177,7 @@
                 }
             })
         })
-        
+
     }
 </script>
 

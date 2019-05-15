@@ -20,6 +20,14 @@
 <script type="text/javascript" src="../script/public.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+
+		
+
+		// if(zhuangtai.denglu.isdenglu){
+		// 	headerheight=150
+		// }else{
+		// 	headerheight = 80
+		// }
 		api.openFrame({
 			name: 'ME_header',
 			url: './ME_header.html',
@@ -28,19 +36,14 @@
 				x: 0,
 				y: 0,
 				w: 'auto',
-				h: 80
+				h: Group.ME_BOX.headerh
 			}
 		});
-
 		var SY_GroupHtml = ['ME_main'];
 		cj_group(Group.ME_BOX.Group, SY_GroupHtml);
-
-
-
 		setTimeout(function () {
 			hiddenframegroup([Group.FL_BOX.header, Group.ME_BOX.header], [Group.FL_BOX.Group, Group.ME_BOX.Group])
-		}, 500);
-
+		}, 800);
 	};
 
 	function cj_group(GroupName, FramesName) {
@@ -57,9 +60,9 @@
 			scrollEnabled: false,
 			rect: {
 				x: 0,
-				y: 80,
+				y: Group.ME_BOX.headerh,
 				w: api.winWidth,
-				h: api.winHeight - 55-80
+				h: api.winHeight - 55- Group.ME_BOX.headerh
 			},
 			preload: FramesName.length,
 			index: 0,
