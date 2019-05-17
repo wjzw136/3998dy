@@ -1,15 +1,15 @@
 var Group = {
-    'SY_BOX': { 'header': 'SY_header', 'Group': 'SY_Group','headerh':50 },
+    'SY_BOX': { 'header': 'SY_header', 'Group': 'SY_Group', 'headerh': 50 },
     'FL_BOX': { 'header': 'FL_header', 'Group': 'FL_Group', 'headerh': 187 },
     'ME_BOX': { 'header': 'ME_header', 'Group': 'ME_Group', 'headerh': 150 }
 }
 var zhuangtai = {
     'denglu': {
         "zhanghao": "wjzw136",
-        "isdenglu":true
+        "isdenglu": true
     }
 }
-var FL_GroupHtml = ['FL_zonghe', 'FL_mhxy','FL_dnf'];
+var FL_GroupHtml = ['FL_zonghe', 'FL_mhxy', 'FL_dnf'];
 function hiddenframegroup(frame, framegroup) {
     for (var i = 0; i < frame.length; i++) {
         api.setFrameAttr({

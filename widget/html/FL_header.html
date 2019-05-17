@@ -106,55 +106,55 @@
         var NVNavigationBar = api.require('NVNavigationBar');
         NVNavigationBar.open({
             rect: {
-                x: 0,
+                x: api.frameWidth/3,
                 y: 137,
-                w: api.frameWidth,
+                w: api.frameWidth/3,
                 h: 50
             },
             styles: {
                 orientation: 'horizontal',
-                bg: '#ff8000',
+                bg: '#ffffff',
                 bgAlpha: 1,
                 font: {
                     size: 18,
                     sizeSelected: 20,
-                    color: '#ffffff',
+                    color: '#656212',
                     colorSelected: '#E44F26',
                     alpha: 1
                 },
                 itemSize: {
-                    w: api.frameWidth/5.5,
+                    w: api.frameWidth / 6,
                     h: 50
                 }
             },
             items: [{
                 title: '资讯',
-                bg: '#ff8000',
+                bg: '#ffffff',
                 bgSelected: '#ffffff'
             }, {
                 title: '福利',
-                bg: '#ff8000',
+                bg: '#ffffff',
                 bgSelected: '#ffffff'
-            }, {
-                    title: '福利',
-                    bg: '#ff8000',
-                    bgSelected: '#ffffff'
-                }, {
-                    title: '福利',
-                    bg: '#ff8000',
-                    bgSelected: '#ffffff'
-                }, {
-                    title: '福利',
-                    bg: '#ff8000',
-                    bgSelected: '#ffffff'
-                }],
+            }],
             selectedIndex: 0,
-            fixedOn: api.frameName,
-            id: 'first'
+                fixedOn: api.frameName,
+                id: 'first'
         }, function (ret, err) {
-           
+            api.setFrameGroupIndex({
+                name: Group.FL_BOX.Group,
+                index: ret.index,
+                scroll: true
+            });
         });
-
+        api.addEventListener({
+            name: 'qiehuandh'
+        }, function(ret, err){
+            NVNavigationBar.setSelected({
+                    id: 'first',
+                    index: ret.value.key,
+                    selected: true
+                });
+        });
 
 
         var dh_li = $api.domAll('.dh ul li');
@@ -170,9 +170,14 @@
                     }
                     $api.css($api.dom(btn, '.imgbox'), 'border-color:orange');
                     $api.css($api.dom(btn, 'div:last-child'), 'color:orange');
-                    api.setFrameGroupIndex({
-                        name: Group.FL_BOX.Group,
-                        index: getid
+                    // api.setFrameGroupIndex({
+                    //     name: Group.FL_BOX.Group,
+                    //     index: getid
+                    // });
+
+                    api.sendEvent({
+                        name: 'qiehuanyouxi',
+                        extra: { key: event.currentTarget.getAttribute('id') }
                     });
                 }
             })

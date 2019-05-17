@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../css/public.css" />
     <style>
         #header {
-            font-size:20px;
+            font-size: 20px;
             /* background-image: url(../image/7.png); */
             background-color: #ff8000;
             color: #fff;
@@ -20,13 +20,30 @@
             width: 100%;
             height: 150px;
         }
+
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        .slide-fade-enter,
+        .slide-fade-leave-to
+
+        /* .slide-fade-leave-active for below version 2.1.8 */
+            {
+            transform: translateX(10px);
+            opacity: 0;
+        }
     </style>
 </head>
 
 <body>
 
     <div id="header">
-        <div v-if="isdenglu" >
+        <div v-show="isdenglu">
             <div class="flex_box_space_between">
                 <div class="flex_box" style="flex-shrink:1;width: 100%">
                     <div style="width:60px;height:60px;flex-shrink:0">
@@ -37,7 +54,7 @@
                         <div>故事就到这</div>
                         <div>LV 5</div>
                     </div>
-                    <div style="flex-shrink:0;padding: 0 15px">
+                    <div id="qiandao" style="flex-shrink:0;padding: 0 15px">
                         <div class="aui-btn aui-btn-outlined">
                             签到
                         </div>
@@ -69,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="!isdenglu"  style="height:130px" class="flex_box_space_between">
+        <div v-show="!isdenglu" style="height:130px" class="flex_box_space_between">
             <div class="flex_box" style="flex-shrink:1;width: 100%;">
                 <div style="width:60px;height:60px;flex-shrink:0">
                     <img src="../image/loading_more.gif" width="100%" height="100%" style="border-radius: 50%" alt=""
@@ -97,12 +114,21 @@
 
         setTimeout(function(){
             denglu.isdenglu=false
-        }, 3000)
-
+        }, 5000); 
         setTimeout(function () {
             denglu.isdenglu = true
-        }, 9000);
+        }, 8000);   
+        $api.addEvt($api.byId('qiandao'), 'click', function () {
+            console.log('sdsad')
+            api.openWin({
+                name: 'qiandao',
+                url: './Z_qiandao.html',
+                bounces: false,
+                pageParam: { key: 'value' }
+            });
+        })
     }
+    
 </script>
 
 </html>

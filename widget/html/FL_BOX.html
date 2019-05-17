@@ -36,12 +36,12 @@
 			frames.push({
 				name: FramesName[i],
 				url: './' + FramesName[i] + '.html',
-				bounces: false
+				bounces: true
 			})
 		}
 		api.openFrameGroup({
 			name: GroupName,
-			scrollEnabled: false,
+			scrollEnabled: true,
 			rect: {
 				x: 0,
 				y: 137+50,
@@ -52,6 +52,11 @@
 			index: 0,
 			frames: frames
 		}, function (ret, err) {
+			api.sendEvent({
+					name: 'qiehuandh',
+					extra: { key: ret.index}
+				});
+			
 		})
 	}
 

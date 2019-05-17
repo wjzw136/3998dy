@@ -48,7 +48,7 @@
 <script type="text/javascript">
     apiready = function () {
         
-        var data1 = [
+        var zonghe = [
             {
                 "id": 32,
                 "biaoti": "科技时代开始骄傲的",
@@ -67,89 +67,44 @@
                 "biaoqian": "幻神",
                 "youxi": 'MHXY',
                 "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": '梦幻西游',
-                "jifen": 200
-            },
+            }
         ]
-
-        
+            var mhxy = [
+            {
+                "id": 999,
+                "biaoti": "梦幻西游",
+                "neirong": "大唐横扫",
+                "time": "2018-05-22,11:21:0",
+                "user": "admin",
+                "biaoqian": "幻神",
+                "youxi": 'mhxy',
+                "jifen": 200
+            }, {
+                "id": 1000,
+                "biaoti": "神木林暴击",
+                "neirong": "神木林暴击",
+                "time": "2018-05-22,11:21:0",
+                "user": "admin",
+                "biaoqian": "幻神",
+                "youxi": 'mhxy',
+                "jifen": 200
+            }
+        ]
+            
         var example1 = new Vue({
             el: '#sjd',
             data: {
-                data1: data1
+                data1: zonghe
             }
         })
         
+        api.addEventListener({
+            name: 'qiehuanyouxi'
+        }, function(ret, err){
+            console.log(JSON.stringify(ret))
+            var res=ret.value.key=mhxy
+            example1.data1= res
+        });
     };
 </script>
 
