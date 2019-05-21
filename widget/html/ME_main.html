@@ -34,18 +34,18 @@
 		</div>
 		<div class="aui-card-list-content aui-border-t" style="padding:15px 15px">
 			<div class="flex_box_space_around" style="flex-wrap: wrap;color: #fff">
-				<div style="width:45%;border-radius:5px ;padding: 10px;margin-bottom: 25px; height: 100px;background-image: url(../image/3.jpg);background-repeat: no-repeat;background-size: 100%">
+				<div id="sjchongzhi" style="width:45%;border-radius:5px ;padding: 10px;margin-bottom: 25px; height: 100px;background-image: url(../image/3.jpg);background-repeat: no-repeat;background-size: 100%">
 					手机充值
 				</div>
-				<div style="width:45%;border-radius:5px ;padding: 10px;margin-bottom: 25px;height: 100px;background-image: url(../image/4.jpg);background-repeat: no-repeat;background-size: 100%">
+				<div id="appxiazai" style="width:45%;border-radius:5px ;padding: 10px;margin-bottom: 25px;height: 100px;background-image: url(../image/4.jpg);background-repeat: no-repeat;background-size: 100%">
 				
-					<div>
-						ksjdadsdsadsadasdsaddasdasd是的撒多撒多撒大所多
-					</div>
+					
+					应用程序下载
+					
 				</div>
-				<div
+				<div id="yxchongzhi"
 					style="width:45%;border-radius:5px ;padding: 10px;margin-bottom: 25px; height: 100px;background-image: url(../image/3.jpg);background-repeat: no-repeat;background-size: 100%">
-					手机充值
+					游戏充值
 				</div>
 				<div
 					style="width:45%;border-radius:5px ;padding: 10px;margin-bottom: 25px;height: 100px;background-image: url(../image/4.jpg);background-repeat: no-repeat;background-size: 100%">
@@ -167,6 +167,33 @@
 				pageParam: { key: 'value' }
 			});
 		});
+
+		$api.addEvt($api.byId('sjchongzhi'), 'click', function () {
+			api.openWin({
+				name: 'sjchongzhi',
+				url: './Z_new_header.html',
+				bounces: false,
+				pageParam: { biaoti: '手机充值', html: 'Z_sjchongzhi' }
+			});
+		})
+
+		$api.addEvt($api.byId('yxchongzhi'), 'click', function () {
+			api.openWin({
+				name: 'yxchongzhi',
+				url: './Z_new_header.html',
+				bounces: false,
+				pageParam: { biaoti: '游戏充值', html: 'Z_yxchongzhi' }
+			});
+		})
+
+		$api.addEvt($api.byId('appxiazai'), 'click', function () {
+			api.openWin({
+				name: 'appxiazai',
+				url: './Z_new_header.html',
+				bounces: false,
+				pageParam: { biaoti: '应用下载', html: 'Z_appxiazai' }
+			});
+		})
 	};
 </script>
 

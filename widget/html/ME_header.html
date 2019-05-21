@@ -37,6 +37,7 @@
             transform: translateX(10px);
             opacity: 0;
         }
+    
     </style>
 </head>
 
@@ -72,7 +73,7 @@
                     </big>
                     <div class="aui-gird-lable aui-font-size-12">余sssss额</div>
                 </div>
-                <div style="text-align: center">
+                <div id="kabao" style="text-align: center">
                     <big class="aui-text-danger">
                         5<small> 个</small>
                     </big>
@@ -111,24 +112,25 @@
                 isdenglu: zhuangtai.denglu.isdenglu
             }
         })
-
-        setTimeout(function(){
-            denglu.isdenglu=false
-        }, 5000); 
-        setTimeout(function () {
-            denglu.isdenglu = true
-        }, 8000);   
         $api.addEvt($api.byId('qiandao'), 'click', function () {
             console.log('sdsad')
             api.openWin({
-                name: 'qiandao',
-                url: './Z_qiandao.html',
+                name: 'Z_qiandao',
+                url: './Z_new_header.html',
                 bounces: false,
-                pageParam: { key: 'value' }
+                pageParam: { biaoti: '签到',html:'Z_qiandao' }
+            });
+        })
+        $api.addEvt($api.byId('kabao'), 'click', function () {
+            api.openWin({
+                name: 'kabao',
+                url: './Z_new_header.html',
+                bounces: false,
+                pageParam: { biaoti:'我的卡包',html:'Z_kabao'  }
             });
         })
     }
-    
+
 </script>
 
 </html>
