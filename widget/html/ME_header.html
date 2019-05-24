@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="flex-shrink:0;">
+                <div id="set" style="flex-shrink:0;">
                     <i class="aui-iconfont aui-icon-gear" style="font-size: 30px"></i>
                 </div>
             </div>
@@ -127,6 +127,15 @@
                 url: './Z_new_header.html',
                 bounces: false,
                 pageParam: { biaoti:'我的卡包',html:'Z_kabao'  }
+            });
+        })
+
+        $api.addEvt($api.byId('set'), 'click', function () {
+            api.openWin({
+                name: 'Z_set',
+                url: './Z_set.html',
+                bounces: false,
+                pageParam: { biaoti: '设置', html: 'Z_set' }
             });
         })
     }
