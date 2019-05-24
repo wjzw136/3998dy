@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+	<title>Hello APP</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css" />
+	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/public.css" />
+	<style>
+		#header {
+			height: 50px;
+			padding: 0px 20px;
+			font-size: 20px;
+			line-height: 50px;
+			/* background-image: url(../image/7.png); */
+			background-color: #ff8000;
+			color: #fff;
+			position: fixed;
+			z-index: 12;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+
+		}
+	</style>
+</head>
+
+<body>
+	<header id="header">
+		<span id='back' class="aui-iconfont aui-icon-left"></span>
+		<!-- <span id="biaoti" style="margin-left:15px">
+			klsajd
+		</span> -->
+		<span id="queding" style="float: right">确定</span>
+	</header>
+	<div id="main" style="padding-bottom:15px;padding-top: 50px">
+		<div  class="aui-card-list">
+			<div class="aui-card-list-header">
+				<div style="border-left:coral solid 5px;padding-left:10px;color: coral" class="aui-font-size-16">
+					已选
+				</div>
+			</div>
+			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
+				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
+					<div v-for="data in yixuan" 
+						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:black;border-radius: 5px;overflow: hidden;">
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span
+							style="padding:0 10px" v-on:click='shanchu(data)'><i class="aui-iconfont aui-icon-close "></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="aui-card-list">
+			<div class="aui-card-list-header">
+				<div style="border-left:coral solid 5px;padding-left:10px;color: coral" class="aui-font-size-16">
+					PC网游
+				</div>
+			</div>
+			
+			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
+
+				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
+					<div v-for="data in pc"
+						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:black;border-radius: 5px;overflow: hidden;">
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span
+							style="padding:0 10px"><i class="aui-iconfont aui-icon-plus "></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="aui-card-list">
+			<div class="aui-card-list-header">
+				<div style="border-left:coral solid 5px;padding-left:10px;color: coral" class="aui-font-size-16">
+					手游
+				</div>
+			</div>
+			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
+			
+				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
+					<div v-for="data in shouyou"
+						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:darkgray;border-radius: 5px;overflow: hidden;">
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span style="padding:0 10px"><i
+								class="aui-iconfont aui-icon-plus "></i></span>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="aui-card-list">
+			<div class="aui-card-list-header">
+				<div style="border-left:coral solid 5px;padding-left:10px;color: coral" class="aui-font-size-16">
+					页游
+				</div>
+			</div>
+			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
+			
+				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
+					<div v-for="data in yeyou"
+						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:darkgray;border-radius: 5px;overflow: hidden;">
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span style="padding:0 10px"><i
+								class="aui-iconfont aui-icon-plus "></i></span>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
+<script type="text/javascript">
+	apiready = function () {
+		$api.addEvt($api.dom('#back'), 'click', function () {
+			api.closeWin();
+		});
+
+		$api.addEvt($api.dom('#queding'), 'click', function () {
+
+			api.closeWin();
+		});
+		var list = new Vue({
+			el: '#main',
+			data: {
+				yixuan:api.pageParam.pingdao.yixuan,
+				pc: api.pageParam.pingdao.pc,
+				shouyou: api.pageParam.pingdao.shouyou,
+				yeyou: api.pageParam.pingdao.yeyou
+			},
+			methods:{
+				shanchu:function(a){
+					yiyuan.splice(a,1)
+				},
+				zengjia: function (a) {
+					yiyuan.splice(a, 1)
+				},
+			}
+		})
+	};
+</script>
+
+</html>

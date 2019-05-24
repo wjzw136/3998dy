@@ -12,98 +12,66 @@
     <link rel="stylesheet" type="text/css" href="../css/public.css" />
 
     <style>
-        
+
     </style>
 </head>
 
 <body>
     <div id="main">
-        <div id="sjd">
-            <div v-for="item in data1" class="aui-card-list">
-                <div class="aui-card-list-header">
-                    <div>{{ item.biaoti }}</div>
-                    <div style="color:rgb(30, 141, 8)"><span class="aui-font-size-14">积分：</span> {{ item.jifen }}</div>
-                </div>
-                <div class=" aui-card-list-content-padded">
-                    <div class="flex_box_space_between">
-                        <div>{{ item.neirong }}</div>
-                        <div style="width:120px;height:80px;flex-shrink:0">
-                            <img src="../image/4.jpg" width="100%" height="100%" style="border-radius: 3px" alt=""
-                                srcset="">
+        <div v-show="!error">
+            <div id="sjd">
+                <div v-for="item in data" class="aui-card-list">
+                    <div class="aui-card-list-header">
+                        <div>{{ item.biaoti }}</div>
+                        <div style="color:rgb(30, 141, 8)"><span class="aui-font-size-14">积分：</span> {{ item.jifen }}
                         </div>
                     </div>
-                </div>
-                <div class="aui-card-list-footer">
-                    <div>{{ item.time }}</div>
-                    <div style="color:coral">{{ item.youxi }}</div>
+                    <div class=" aui-card-list-content-padded">
+                        <div class="flex_box_space_between">
+                            <div>{{ item.neirong }}</div>
+                            <div style="width:120px;height:80px;flex-shrink:0">
+                                <img :src="'../image/'+ item.image" width="100%" height="100%" style="border-radius: 3px" alt=""
+                                    srcset="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-card-list-footer">
+                        <div>{{ item.time }}</div>
+                        <div style="color:coral">{{ item.youxi }}</div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        
+        <div v-show="error">
+            {{ errormsg }}
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/vue.js"></script>
+<script type="text/javascript" src="../script/public.js"></script>
 <script type="text/javascript">
     apiready = function () {
-        
-        var zonghe = [
-            {
-                "id": 32,
-                "biaoti": "科技时代开始骄傲的",
-                "neirong": "深刻了解到拉萨到家啦斯柯达sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 33,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'MHXY',
-                "jifen": 200
-            }
-        ]
-            var mhxy = [
-            {
-                "id": 999,
-                "biaoti": "梦幻西游",
-                "neirong": "大唐横扫",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'mhxy',
-                "jifen": 200
-            }, {
-                "id": 1000,
-                "biaoti": "神木林暴击",
-                "neirong": "神木林暴击",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'mhxy',
-                "jifen": 200
-            }
-        ]
-            
         var example1 = new Vue({
-            el: '#sjd',
+            el: '#main',
             data: {
-                data1: zonghe
+                error: false,
+                data: zonghe.zixun,
+                errormsg:'没有找到您需要的数据'
             }
         })
-        
+
         api.addEventListener({
             name: 'qiehuanyouxi'
-        }, function(ret, err){
-            console.log(JSON.stringify(ret))
-            var res=ret.value.key=mhxy
-            example1.data1= res
+        }, function (ret, err) {
+            var yx = ret.value.key;
+            var res = yxdata[yx].zixun
+            if (res == undefined || res == '') {
+                example1.error = true
+            } else {
+                example1.error = false
+                example1.data = res
+            }
         });
     };
 </script>

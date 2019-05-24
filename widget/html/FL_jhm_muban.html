@@ -48,7 +48,7 @@
         </div>
 
         <div id="sjd">
-            <div v-for="item in data1" :dataid='item.id' class="aui-card-list">
+            <div v-for="item in data" :dataid='item.id' class="aui-card-list">
                 <div class="aui-card-list-header">
                     <div>{{ item.biaoti }}</div>
                     <div style="color:rgb(30, 141, 8)"><span class="aui-font-size-14">积分：</span> {{ item.jifen }}</div>
@@ -57,7 +57,7 @@
                     <div class="flex_box_space_between">
                         <div>{{ item.neirong }}</div>
                         <div style="width:120px;height:80px;flex-shrink:0">
-                            <img src="../image/4.jpg" width="100%" height="100%" style="border-radius: 3px" alt=""
+                            <img :src="'../image/'+ item.image" width="100%" height="100%" style="border-radius: 3px" alt=""
                                 srcset="">
                         </div>
                     </div>
@@ -79,109 +79,24 @@
 <script type="text/javascript">
     apiready = function () {
         //getlunbotu()
-        var data1 = [
-            {
-                "id": 32,
-                "biaoti": "DNF夏日礼包更行了",
-                "neirong": "活动期间，Lv17及以上的勇士可以通过赛丽亚房间专属活动NPC疯疯熊和幻鬼之剑进入剧情地下城。每个账号每日可以进入剧情地下城1次，入场次数于次日06: 00重置；每周最多进入4次，每周累计入场次数于周四06: 00重置。随着剧情地下城通关，可以获得对应的奖励道具。",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 33,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            }, {
-                "id": 34,
-                "biaoti": "企业文化",
-                "neirong": "jskdskadsd",
-                "time": "2018-05-22,11:21:0",
-                "user": "admin",
-                "biaoqian": "幻神",
-                "youxi": 'DNF',
-                "jifen": 200
-            },
-        ]
-
-
         var example1 = new Vue({
             el: '#sjd',
             data: {
-                data1: data1
+                data: zonghe.jihuoma
             }
         })
 
-
+        api.addEventListener({
+            name: 'qiehuanyouxi'
+        }, function (ret, err) {
+            var yx = ret.value.key;
+            var res = yxdata[yx].jihuoma
+            if (res == undefined || res == '') {
+                $api.html($api.dom('body'), 'cuowu');
+            } else {
+                example1.data = res
+            }
+        });
 
         var dh_li = $api.domAll('.aui-card-list');
         Array.prototype.forEach.call(dh_li, function (btn) {

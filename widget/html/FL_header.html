@@ -29,7 +29,7 @@
             width: 20%;
             text-align: center;
             margin-bottom: 20px;
-            color: #fff
+            color: orange
         }
 
         .dh ul li div:last-child {
@@ -42,8 +42,6 @@
 
             width: 100%;
             height: 100%;
-
-
         }
 
         .li-active {
@@ -55,14 +53,15 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            border: #fff 3px solid;
+            border: orange 3px solid;
             overflow: hidden;
         }
 
         .sss {
             color: orange
         }
-        .sdsd{
+
+        .sdsd {
             color: #000000
         }
     </style>
@@ -73,21 +72,13 @@
 
     <div id="dh" class="dh">
         <ul>
-            <li id="zonghe" paixu='0'>
-                <div class="imgbox"> <img src="../image/8.png" alt=""></div>
-                <div class="bt">综合</div>
+            <li  id="zonghe" gamename='zonghe' paixu='0'>
+                <div class="imgbox" style="border: #fff 3px solid;"> <img src="../image/8.png" alt=""></div>
+                <div class="bt" style="color: #fff">综合</div>
             </li>
-            <li id="mhxy" paixu='1'>
-                <div class="imgbox"> <img src="../image/8.png" alt=""></div>
-                <div class="bt">梦幻西游</div>
-            </li>
-            <li id="yxlm" paixu='2'>
-                <div class="imgbox"> <img src="../image/8.png" alt=""></div>
-                <div class="bt">英雄联盟</div>
-            </li>
-            <li id="cyhx" paixu='3'>
-                <div class="imgbox"> <img src="../image/8.png" alt=""></div>
-                <div class="bt">穿越火线</div>
+            <li v-for="data in yixuan" :gamename="data.name" paixu='1'>
+                <div class="imgbox"> <img :src='data.img' alt=""></div>
+                <div class="bt">{{data.name}}</div>
             </li>
             <li id="tj" paixu='4'>
                 <div class="imgbox"> <img src="../image/8.png" alt=""></div>
@@ -101,17 +92,25 @@
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
 <script type="text/javascript" src="../script/public.js"></script>
 
 <script type="text/javascript">
     apiready = function () {
+        
+        var list = new Vue({
+            el: '#dh',
+            data: {
+                yixuan: pingdao.yixuan,
+            }
+        })
 
         var NVNavigationBar = api.require('NVNavigationBar');
         NVNavigationBar.open({
             rect: {
-                x: api.frameWidth/4,
+                x: api.frameWidth / 4,
                 y: 137,
-                w: api.frameWidth/2,
+                w: api.frameWidth / 2,
                 h: 50
             },
             styles: {
@@ -126,7 +125,7 @@
                     alpha: 1
                 },
                 itemSize: {
-                    w: api.frameWidth/2/3,
+                    w: api.frameWidth / 2 / 3,
                     h: 50
                 }
             },
@@ -139,13 +138,13 @@
                 bg: '#ffffff',
                 bgSelected: '#ffffff'
             }, {
-                    title: '激活码',
-                    bg: '#ffffff',
-                    bgSelected: '#ffffff'
-                }],
+                title: '激活码',
+                bg: '#ffffff',
+                bgSelected: '#ffffff'
+            }],
             selectedIndex: 0,
-                fixedOn: api.frameName,
-                id: 'first'
+            fixedOn: api.frameName,
+            id: 'first'
         }, function (ret, err) {
             api.setFrameGroupIndex({
                 name: Group.FL_BOX.Group,
@@ -155,12 +154,12 @@
         });
         api.addEventListener({
             name: 'qiehuandh'
-        }, function(ret, err){
+        }, function (ret, err) {
             NVNavigationBar.setSelected({
-                    id: 'first',
-                    index: ret.value.key,
-                    selected: true
-                });
+                id: 'first',
+                index: ret.value.key,
+                selected: true
+            });
         });
 
 
@@ -169,22 +168,27 @@
             btn.addEventListener('click', function (event) {
                 var getid = event.currentTarget.getAttribute('paixu');
                 if (getid == 4) {
-                    alert('添加')
+                    api.openWin({
+                        name: 'Z_yxlist',
+                        url: './Z_yxlist.html',
+                        bounces: false,
+                        pageParam: { pingdao: pingdao }
+                    });
                 } else {
                     for (var index = 0; index < dh_li.length; index++) {
-                        $api.css($api.dom(dh_li[index], '.imgbox'), 'border-color:#fff');
-                        $api.css($api.dom(dh_li[index], '.bt'), 'color:#fff');
+                        $api.css($api.dom(dh_li[index], '.imgbox'), 'border-color:orange');
+                        $api.css($api.dom(dh_li[index], '.bt'), 'color:orange');
                     }
-                    $api.css($api.dom(btn, '.imgbox'), 'border-color:orange');
-                    $api.css($api.dom(btn, 'div:last-child'), 'color:orange');
+                    $api.css($api.dom(btn, '.imgbox'), 'border-color:#fff');
+                    $api.css($api.dom(btn, 'div:last-child'), 'color:#fff');
                     // api.setFrameGroupIndex({
                     //     name: Group.FL_BOX.Group,
-                    //     index: getid
+                    //     index: event.currentTarget.getAttribute('id')
                     // });
 
                     api.sendEvent({
                         name: 'qiehuanyouxi',
-                        extra: { key: event.currentTarget.getAttribute('id') }
+                        extra: { key: event.currentTarget.getAttribute('gamename') }
                     });
                 }
             })
