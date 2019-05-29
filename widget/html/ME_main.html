@@ -47,7 +47,7 @@
 					<i class="aui-iconfont aui-icon-cart"></i>
 					<div class="aui-gird-lable aui-font-size-14">游戏充值</div>
 				</div>
-				<div id="guanzhu" class="aui-col-xs-3 ">
+				<div id="qiandao" class="aui-col-xs-3 ">
 					<i class="aui-iconfont aui-icon-like"></i>
 					<div class="aui-gird-lable aui-font-size-14">签到</div>
 				</div>
@@ -241,6 +241,16 @@
 				url: './Z_new_header.html',
 				bounces: false,
 				pageParam: { biaoti: '应用下载', html: 'Z_appxiazai' }
+			});
+		})
+
+		$api.addEvt($api.byId('qiandao'), 'click', function () {
+			console.log('sdsad')
+			api.openWin({
+				name: 'Z_qiandao',
+				url: './Z_new_header.html',
+				bounces: false,
+				pageParam: { biaoti: '签到', html: 'Z_qiandao' }
 			});
 		})
 	};

@@ -55,11 +55,11 @@
                         <div>故事就到这</div>
                         <div>LV 5</div>
                     </div>
-                    <div id="qiandao" style="flex-shrink:0;padding: 0 15px">
+                    <!-- <div id="qiandao" style="flex-shrink:0;padding: 0 15px">
                         <div class="aui-btn aui-btn-outlined">
                             签到
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div id="set" style="flex-shrink:0;">
                     <i class="aui-iconfont aui-icon-gear" style="font-size: 30px"></i>
@@ -81,13 +81,13 @@
                 </div>
                 <div id="jifen" style="text-align: center">
                     <big class="aui-text-success">
-                        2000000<small> 分</small>
+                        2000<small> 分</small>
                     </big>
                     <div class="aui-gird-lable aui-font-size-12">积分</div>
                 </div>
             </div>
         </div>
-        <div v-show="!isdenglu" style="height:130px" class="flex_box_space_between">
+        <div v-show="!isdenglu" id="denglu" style="height:130px" class="flex_box_space_between">
             <div class="flex_box" style="flex-shrink:1;width: 100%;">
                 <div style="width:60px;height:60px;flex-shrink:0">
                     <img src="../image/loading_more.gif" width="100%" height="100%" style="border-radius: 50%" alt=""
@@ -138,7 +138,36 @@
                 pageParam: { biaoti: '设置', html: 'Z_set' }
             });
         })
+
+        $api.addEvt($api.byId('denglu'), 'click', function () {
+            api.openWin({
+                name: 'Z_denglu',
+                url: './Z_new_header.html',
+                bounces: false,
+                pageParam: { biaoti: '登录', html: 'Z_denglu' }
+            });
+        })
+
+
+        api.addEventListener({
+            name: 'tuichudenglu'
+        }, function(ret, err){
+            denglu.isdenglu=false
+        });
+
+        api.addEventListener({
+            name: 'loginOK'
+        }, function (ret, err) {
+            denglu.isdenglu = true
+        });
     }
+
+    function autologin() {
+        var zhanghao= $api.getStorage('zhanghao');
+
+    }
+
+
 
 </script>
 

@@ -72,15 +72,15 @@
 
     <div id="dh" class="dh">
         <ul>
-            <li  id="zonghe" gamename='zonghe' paixu='0'>
+            <li  id="zonghe" gamename='zonghe'>
                 <div class="imgbox" style="border: #fff 3px solid;"> <img src="../image/8.png" alt=""></div>
                 <div class="bt" style="color: #fff">综合</div>
             </li>
-            <li v-for="data in yixuan" :gamename="data.name" paixu='1'>
+            <li v-for="data in yixuan" :gamename="data.name">
                 <div class="imgbox"> <img :src='data.img' alt=""></div>
                 <div class="bt">{{data.name}}</div>
             </li>
-            <li id="tj" paixu='4'>
+            <li id="tj">
                 <div class="imgbox"> <img src="../image/8.png" alt=""></div>
                 <div class="bt">添加</div>
             </li>
@@ -166,8 +166,10 @@
         var dh_li = $api.domAll('.dh ul li');
         Array.prototype.forEach.call(dh_li, function (btn) {
             btn.addEventListener('click', function (event) {
-                var getid = event.currentTarget.getAttribute('paixu');
-                if (getid == 4) {
+
+
+                var getid = event.currentTarget.getAttribute('id');
+                if (getid == 'tj') {
                     api.openWin({
                         name: 'Z_yxlist',
                         url: './Z_yxlist.html',

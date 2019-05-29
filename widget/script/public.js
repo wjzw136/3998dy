@@ -35,6 +35,29 @@ var pingdao = {
     ]
 }
 
+var lunbotu ={
+    paths: [
+        '../image/1.jpg',
+        '../image/2.jpg',
+        '../image/3.jpg',
+        '../image/4.jpg'
+    ],
+    captions: [
+        'sjdakd',
+        'sjdakd',
+        'sjdakd',
+        'sjdakd',
+    ],
+    click: [
+        'a',
+        'b',
+        'c',
+        'd'
+    ]
+}
+
+
+
 
 
 function hiddenframegroup(frame, framegroup) {
@@ -105,13 +128,13 @@ zonghe = {
     fuli: [
         {
             "id": 1,
-            "biaoti": "这是福利第一条信息",
-            "neirong": "这是福利第一条信息",
+            "biaoti": "好礼现享，注册即送100积分",
+            "neirong": "好礼现享，注册即送100积分，100积分可参与各种抽奖",
             "time": "2018-05-22,11:21:0",
             "user": "admin",
-            "biaoqian": "幻神",
+            "biaoqian": "送分题",
             "youxi": 'DNF',
-            "jifen": 200,
+            "jifen": 100,
             'image': '4.jpg'
         }, {
             "id": 2,

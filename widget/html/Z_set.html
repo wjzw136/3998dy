@@ -26,7 +26,7 @@
 	<header id="header">
 		<span id='back' class="aui-iconfont aui-icon-left"></span>
 		<span id="biaoti" style="margin-left:15px">
-			klsajd
+			设置
 		</span>
 	</header>
 
@@ -36,6 +36,23 @@
 				<div class="aui-list-item-inner aui-list-item-arrow">
 					<div class="aui-list-item-title">昵称更改</div>
 			</li>
+
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner aui-list-item-arrow">
+					<div class="aui-list-item-title">更换手机号</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-title">通知设置</div>
+					<div>sdsd</div>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+	<div class="aui-content aui-margin-b-15">
+		<ul class="aui-list aui-list-in">
 			<li class="aui-list-item aui-list-item-middle">
 				<div class="aui-list-item-inner aui-list-item-arrow">
 					<div class="aui-list-item-title">信息反馈</div>
@@ -46,22 +63,13 @@
 					<div class="aui-list-item-title">检查更新</div>
 				</div>
 			</li>
+
 			<li class="aui-list-item">
 				<div class="aui-list-item-inner aui-list-item-arrow">
-					<div class="aui-list-item-title">更换手机号</div>
+					<div class="aui-list-item-title">联系我们</div>
 				</div>
 			</li>
-			<li class="aui-list-item">
-				<div class="aui-list-item-inner aui-list-item-arrow">
-					<div class="aui-list-item-title">通知设置</div>
-				</div>
-			</li>
-			<li class="aui-list-item">
-				<div class="aui-list-item-inner aui-list-item-arrow">
-					<div class="aui-list-item-title">合作</div>
-				</div>
-			</li>
-			<li class="aui-list-item">
+			<li id="tuichudenglu" class="aui-list-item">
 				<div class="aui-list-item-inner aui-list-item-arrow">
 					<div class="aui-list-item-title">退出登录</div>
 				</div>
@@ -77,6 +85,14 @@
 		$api.addEvt($api.dom('#back'), 'click', function () {
 			api.closeWin();
 		});
+		$api.addEvt($api.dom('#tuichudenglu'), 'click', function () {
+
+			api.sendEvent({
+				name: 'tuichudenglu'
+			});
+			api.closeWin();
+		});
+
 	};
 </script>
 
