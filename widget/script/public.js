@@ -12,6 +12,9 @@ var zhuangtai = {
 var FL_GroupHtml = ['FL_zonghe', 'FL_yx_muban', 'FL_jhm_muban'];
 
 var pingdao = {
+    new: [
+        {name:'',image:''}
+    ],
     yixuan: [
         { name: "DNF", img: "../image/2.jpg" },
         { name: "梦幻西游", img: "../image/3.jpg" },

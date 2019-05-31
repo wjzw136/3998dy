@@ -38,7 +38,7 @@
 		<span id="queding" style="float: right">确定</span>
 	</header>
 	<div id="main" style="padding-bottom:15px;padding-top: 50px">
-		<div  class="aui-card-list">
+		<div class="aui-card-list">
 			<div class="aui-card-list-header">
 				<div style="border-left:coral solid 5px;padding-left:10px;color: coral" class="aui-font-size-16">
 					已选
@@ -46,10 +46,11 @@
 			</div>
 			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
 				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
-					<div v-for="data in yixuan" 
+					<div v-for="(data,index) in yixuan"
 						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:black;border-radius: 5px;overflow: hidden;">
-						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span
-							style="padding:0 10px" v-on:click='shanchu(data)'><i class="aui-iconfont aui-icon-close "></i></span>
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span>
+						<span style="padding:0 10px" v-on:click='shanchu(index)'><i
+								class="aui-iconfont aui-icon-close "></i></span>
 					</div>
 				</div>
 			</div>
@@ -61,14 +62,15 @@
 					PC网游
 				</div>
 			</div>
-			
+
 			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
 
 				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
-					<div v-for="data in pc"
+					<div v-for="(data,index) in pc"
 						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:black;border-radius: 5px;overflow: hidden;">
-						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span
-							style="padding:0 10px"><i class="aui-iconfont aui-icon-plus "></i></span>
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span>
+						<span style="padding:0 10px" v-on:click='zengjia(index,pc)'><i
+								class="aui-iconfont aui-icon-plus "></i></span>
 					</div>
 				</div>
 			</div>
@@ -80,14 +82,15 @@
 				</div>
 			</div>
 			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
-			
+
 				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
-					<div v-for="data in shouyou"
+					<div v-for="(data,index) in shouyou"
 						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:darkgray;border-radius: 5px;overflow: hidden;">
-						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span style="padding:0 10px"><i
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span>
+						<span style="padding:0 10px" v-on:click='zengjia(index,shouyou)'><i
 								class="aui-iconfont aui-icon-plus "></i></span>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -98,14 +101,13 @@
 				</div>
 			</div>
 			<div class="aui-card-list-content aui-border-t" style="padding:0 15px;padding-bottom: 15px">
-			
 				<div class="flex_box" style="flex-wrap: wrap;color:#fff;">
-					<div v-for="data in yeyou"
+					<div v-for="(data,index) in yeyou"
 						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:darkgray;border-radius: 5px;overflow: hidden;">
-						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span><span style="padding:0 10px"><i
+						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span>
+						<span style="padding:0 10px " v-on:click='zengjia(index,yeyou)'><i
 								class="aui-iconfont aui-icon-plus "></i></span>
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -127,18 +129,53 @@
 		var list = new Vue({
 			el: '#main',
 			data: {
-				yixuan:api.pageParam.pingdao.yixuan,
+				yixuan: api.pageParam.pingdao.yixuan,
 				pc: api.pageParam.pingdao.pc,
 				shouyou: api.pageParam.pingdao.shouyou,
 				yeyou: api.pageParam.pingdao.yeyou
 			},
-			methods:{
-				shanchu:function(a){
-					yiyuan.splice(a,1)
+			methods: {
+				shanchu: function (index) {
+					if (this.yixuan.length > 1) {
+
+						this.yixuan.splice(index, 1)
+					} else {
+						api.toast({
+							msg: '至少选择一个游戏',
+							duration: 2000,
+							location: 'bottom'
+						});
+					}
+
 				},
-				zengjia: function (a) {
-					yiyuan.splice(a, 1)
-				},
+				zengjia: function (index, abs) {
+					var istrue = false;
+					//console.log(JSON.stringify(pc) )
+					for (var i = 0; i < this.yixuan.length; i++) {
+						if (this.yixuan[i].name === abs[index].name) {
+							istrue = true
+						}
+					}
+					if (!istrue) {
+
+						if (this.yixuan.length < 3) {
+
+							list.yixuan.splice(this.yixuan.length, 0, abs[index])
+						} else {
+							api.toast({
+								msg: '至多选择三个游戏',
+								duration: 2000,
+								location: 'bottom'
+							});
+						}
+					} else {
+						api.toast({
+							msg: '已添加',
+							duration: 2000,
+							location: 'bottom'
+						});
+					}
+				}
 			}
 		})
 	};

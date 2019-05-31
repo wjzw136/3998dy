@@ -11,33 +11,36 @@
 	<link rel="stylesheet" type="text/css" href="../css/aui.css" />
 	<style>
 		#footer {
-            background-color: #fff;
-            width: 100%;
-            height: 50px;
-            position: fixed;
-            bottom: 0px;
-            line-height: 50px;
-            z-index: 1000;
-        }
-        .neirong-box p{
-            font-size: 18px
-        }
+			background-color: #fff;
+			width: 100%;
+			height: 50px;
+			position: fixed;
+			bottom: 0px;
+			line-height: 50px;
+			z-index: 1000;
+		}
+
+		.neirong-box p {
+			font-size: 18px
+		}
+
 		#header {
-            height: 50px;
-            padding: 0px 20px;
-            font-size: 22px;
-            line-height: 50px;
-            /* background-image: url(../image/7.png); */
-            background-color: #ff8000;
-            color: #fff;
+			height: 50px;
+			padding: 0px 20px;
+			font-size: 22px;
+			line-height: 50px;
+			/* background-image: url(../image/7.png); */
+			background-color: #ff8000;
+			color: #fff;
 			position: fixed;
 			width: 100%;
-			top:0;
+			top: 0;
 			left: 0;
 			z-index: 999
-        }
+		}
 	</style>
 </head>
+
 <body>
 	<header id="header">
 		<span id='back' class="aui-iconfont aui-icon-left"></span>
@@ -56,17 +59,20 @@
 				</div>
 				<div class="aui-info-item">sdadsdsadasd</div>
 			</div>
-			
+
 			<div class="aui-margin-b-15">
 				<img style="margin:0px auto" src="../image/4.jpg" alt="" srcset="">
 			</div>
-			
+
 			<div class="aui-margin-b-15 neirong-box">
 				<p>sdsadsada</p>
-			<p>sdsadsada</p><p>sdsadsada</p><p>sdsadsada</p><p>sdsadsada</p>
+				<p>sdsadsada</p>
+				<p>sdsadsada</p>
+				<p>sdsadsada</p>
+				<p>sdsadsada</p>
 			</div>
 			<div class="flex_box_space_around" style="font-size:12px;margin:15px 0">
-			
+
 				<div style="border-radius: 15px;border: solid 1px red;padding: 2px 15px;width:30%;line-height:30px">
 					<img class="aui-pull-left " src="../image/8.png" width='30px' height='30px' alt=""
 						srcset=""><span>微信</span>
@@ -92,8 +98,8 @@
 			</div>
 		</div>
 	</section>
-                
-         
+
+
 	<!-- 评论模块 -->
 	<section class="aui-content">
 		<div id="pinglun_xinxibox">
@@ -107,34 +113,34 @@
 			</div>
 		</div>
 	</section>
-	
 
-                <ul class="aui-list aui-media-list aui-list-noborder">
-                    <li class="aui-list-header">
-                        图文列表
-                    </li>
-                        
-                    <li class="aui-list-item">
-                        <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media" style="width:2.4rem">
-                                <img src="../image/demo3.png" class="aui-img-round" />
-                            </div>
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-text">
-                                    <div class="aui-list-item-title aui-text-info">sdasdsda</div>
-                                </div>
-                                <div class="aui-list-item-text" style="color:#333;">
-                                       sdsadsda
-                                 </div>
-                                <div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
-                                    <div class="aui-info-item">sdasdsda</div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                </ul>
-                
+
+	<ul class="aui-list aui-media-list aui-list-noborder">
+		<li class="aui-list-header">
+			图文列表
+		</li>
+
+		<li class="aui-list-item">
+			<div class="aui-media-list-item-inner">
+				<div class="aui-list-item-media" style="width:2.4rem">
+					<img src="../image/demo3.png" class="aui-img-round" />
+				</div>
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-text">
+						<div class="aui-list-item-title aui-text-info">sdasdsda</div>
+					</div>
+					<div class="aui-list-item-text" style="color:#333;">
+						sdsadsda
+					</div>
+					<div class="aui-info aui-font-size-12 aui-padded-t-0 aui-padded-b-0">
+						<div class="aui-info-item">sdasdsda</div>
+					</div>
+				</div>
+			</div>
+		</li>
+
+	</ul>
+
 	<div style="height: 50px;background-color: #fff"></div>
 
 	<div id="pinglunbox"
@@ -144,7 +150,7 @@
 				style="border: #03A9F4 1px solid;border-radius: 10px;margin: 0px;padding: 0px;font-size: 14px;height: 30px;width: 65%;padding-left: 10px"
 				type="text" placeholder="说点什么">
 			<i class="aui-iconfont aui-icon-laud aui-font-size-16"></i>
-			<i class="aui-iconfont aui-icon-share aui-font-size-16"></i>
+			<i id="fenxiang" class="aui-iconfont aui-icon-share aui-font-size-16"></i>
 			<div id='pinglun_fasong' style="width: 15%;text-align: center">发送</div>
 		</div>
 	</div>
@@ -161,13 +167,101 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/public.js"></script>
+<script type="text/javascript" src="../script/vue.js"></script>
 <script type="text/javascript">
 	apiready = function () {
 		$api.addEvt($api.dom('#back'), 'click', function () {
 			api.closeWin();
 		});
-		var dataid=api.pageParam.dataid
+		var dataid = api.pageParam.dataid
 		$api.html($api.byId('biaoti'), dataid);
+
+
+
+		$api.addEvt($api.dom('#fenxiang'), 'click', function () {
+			show_fenxiang()
+		})
+	}
+
+
+
+	function show_fenxiang() {
+
+		var dialogBox = api.require('dialogBox');
+		dialogBox.actionMenu({
+			rect: {
+				h: 120
+			},
+			items: [
+				{
+					text: '微信',
+					icon: 'widget://image/share/wx-circle.png'
+				},
+				{
+					text: 'QQ',
+					icon: 'widget://image/share/qq-friend.png'
+				},
+				{
+					text: '微博',
+					icon: 'widget://image/share/qq-weibo.png'
+				},
+				{
+					text: '短信',
+					icon: 'widget://image/share/message.png'
+				}
+			],
+			styles: {
+				bg: '#FFF',
+				column: 4,
+				itemText: {
+					color: '#000',
+					size: 14,
+					marginT: 10
+				},
+				itemIcon: {
+					size: 50
+				}
+
+			},
+			tapClose: true,
+		}, function (ret) {
+			
+			if (ret.eventType == 'cancel') {
+				dialogBox.close({
+					dialogName: 'actionMenu'
+				});
+			} else if (ret.index == 0) {//微信
+				var wx = api.require('wx');
+				wx.shareImage({
+					apiKey: 'wx120563a9b357a081',
+					scene: 'session',
+					thumb: 'widget://image/share/message.png',
+					contentUrl: 'widget://image/share/message.png'
+				}, function (ret, err) {
+					if (ret.status) {
+						alert('分享成功');
+					} else {
+						alert(err.code);
+					}
+				});
+			}
+			else if (ret.index == 1) {//微信
+				var wx = api.require('wx');
+				wx.shareText({
+					apiKey: 'wx120563a9b357a081',
+					scene: 'timeline',
+					text: '我分享的文本'
+				}, function (ret, err) {
+					if (ret.status) {
+						alert('分享成功');
+					} else {
+						alert(err.code);
+					}
+				});
+			}
+		});
+
+
 	}
 </script>
 

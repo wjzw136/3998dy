@@ -72,7 +72,7 @@
 
     <div id="dh" class="dh">
         <ul>
-            <li  id="zonghe" gamename='zonghe'>
+            <li id="zonghe" gamename='zonghe'>
                 <div class="imgbox" style="border: #fff 3px solid;"> <img src="../image/8.png" alt=""></div>
                 <div class="bt" style="color: #fff">综合</div>
             </li>
@@ -97,7 +97,7 @@
 
 <script type="text/javascript">
     apiready = function () {
-        
+
         var list = new Vue({
             el: '#dh',
             data: {
@@ -187,7 +187,11 @@
                     //     name: Group.FL_BOX.Group,
                     //     index: event.currentTarget.getAttribute('id')
                     // });
-
+                    api.setFrameGroupIndex({
+                        name: Group.FL_BOX.Group,
+                        index: 0,
+                        scroll: true
+                    });
                     api.sendEvent({
                         name: 'qiehuanyouxi',
                         extra: { key: event.currentTarget.getAttribute('gamename') }
