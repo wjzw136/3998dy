@@ -16,9 +16,9 @@ var pingdao = {
         {name:'',image:''}
     ],
     yixuan: [
-        { name: "DNF", img: "../image/2.jpg" },
-        { name: "梦幻西游", img: "../image/3.jpg" },
-        { name: "英雄联盟", img: "../image/4.jpg" }
+        { name: "DNF", img: "../image/ui/dnf.png" },
+        { name: "梦幻西游", img: "../image/ui/mssj.png" },
+        { name: "英雄联盟", img: "../image/ui/yxlm.png" }
     ],
     pc: [
         { name: "DNF", img: "../image/2.jpg" },

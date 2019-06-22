@@ -98,24 +98,17 @@
 <script type="text/javascript">
     apiready = function () {
 
-        var list = new Vue({
-            el: '#dh',
-            data: {
-                yixuan: pingdao.yixuan,
-            }
-        })
-
-        var NVNavigationBar = api.require('NVNavigationBar');
+         var NVNavigationBar = api.require('NVNavigationBar');
         NVNavigationBar.open({
             rect: {
-                x: api.frameWidth / 4,
+                x: api.winWidth  / 4,
                 y: 137,
-                w: api.frameWidth / 2,
+                w: api.winWidth / 2,
                 h: 50
             },
             styles: {
                 orientation: 'horizontal',
-                bg: '#ffffff',
+                bg: '#231323',
                 bgAlpha: 1,
                 font: {
                     size: 16,
@@ -125,7 +118,7 @@
                     alpha: 1
                 },
                 itemSize: {
-                    w: api.frameWidth / 2 / 3,
+                    w: api.winWidth / 2 / 3,
                     h: 50
                 }
             },
@@ -146,15 +139,30 @@
             fixedOn: api.frameName,
             id: 'first'
         }, function (ret, err) {
+           
             api.setFrameGroupIndex({
                 name: Group.FL_BOX.Group,
                 index: ret.index,
                 scroll: true
             });
         });
+
+        
+        var list = new Vue({
+            el: '#dh',
+            data: {
+                yixuan: pingdao.yixuan,
+            }
+        })
+       
+       
+
+
+
         api.addEventListener({
             name: 'qiehuandh'
         }, function (ret, err) {
+            
             NVNavigationBar.setSelected({
                 id: 'first',
                 index: ret.value.key,

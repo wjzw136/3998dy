@@ -37,6 +37,17 @@
 <script type="text/javascript">
     
     apiready = function () {
+
+        
+        api.openWin({
+            name: 'kaipin',
+            url: './html/kaipin.html',
+            bounces: false,
+            pageParam: {key : 'value'}
+        });
+
+
+
         var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
         //var headerPos = $api.offset(header);
@@ -78,8 +89,6 @@
         var root_shouye_GroupHtml = ['SY_BOX', 'FL_BOX', 'ME_BOX']
         cj_group(root_Group, root_shouye_GroupHtml)
     }
-
-
     function cj_group(GroupName, FramesName) {
         var frames = [];
         for (var i = 0, len = FramesName.length; i < len; i++) {
