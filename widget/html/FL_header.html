@@ -81,10 +81,11 @@
                 <div class="bt">{{data.name}}</div>
             </li>
             <li id="tj">
-                <div class="imgbox"> <img src="../image/8.png" alt=""></div>
+                <!-- <div class="imgbox"> <img src="../image/8.png" alt=""></div> -->
+                <div class="imgbox" style="line-height: 60px"> <span style="font-size:40px;color: #ffffff">＋</span></div>
                 <div class="bt">添加</div>
             </li>
-        </ul>
+        </ul> 
 
     </div>
     <div style="height:50px;background-color: #fff"></div>
@@ -174,8 +175,6 @@
         var dh_li = $api.domAll('.dh ul li');
         Array.prototype.forEach.call(dh_li, function (btn) {
             btn.addEventListener('click', function (event) {
-
-
                 var getid = event.currentTarget.getAttribute('id');
                 if (getid == 'tj') {
                     api.openWin({

@@ -89,7 +89,7 @@ td,th {
 	justify-content: flex-start;
     display: -webkit-box;
 	display: -webkit-flex;
-	align-items:center
+	/* align-items:center */
 }
 .flex_box_space_between{
 	align-items: center;

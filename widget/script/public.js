@@ -9,7 +9,7 @@ var zhuangtai = {
         "isdenglu": true
     }
 }
-var FL_GroupHtml = ['FL_zonghe', 'FL_yx_muban', 'FL_jhm_muban'];
+var FL_GroupHtml = ['FL_zx_muban', 'FL_fl_muban', 'FL_jhm_muban'];
 
 var pingdao = {
     new: [
@@ -98,8 +98,8 @@ zonghe = {
     zixun: [
         {
             "id": 1,
-            "biaoti": "这是资讯第一条信息",
-            "neirong": "这是资讯第一条信息",
+            "biaoti": "这是资讯第一条信息斯康杜尼借款收到好多",
+            "neirong": "这是资讯第一条信息加快速度都看不见的课本上的开不开机",
             "time": "2018-05-22,11:21:0",
             "user": "admin",
             "biaoqian": "资讯",
@@ -132,7 +132,7 @@ zonghe = {
         {
             "id": 1,
             "biaoti": "好礼现享，注册即送100积分",
-            "neirong": "好礼现享，注册即送100积分，100积分可参与各种抽奖",
+            "neirong": "好礼现享，注册即送100积分，100积分可参与各种抽奖,100积分可参与各种抽奖",
             "time": "2018-05-22,11:21:0",
             "user": "admin",
             "biaoqian": "送分题",
@@ -142,7 +142,7 @@ zonghe = {
         }, {
             "id": 2,
             "biaoti": "这是福利第二条信息",
-            "neirong": "这是福利第二条信息",
+            "neirong": "这是福利第二条信息这是福利第二条信息这是福利第二条信息这是福利第二条信息这是福利第二条信息这是福利第二条信息这是福利第二条信息",
             "time": "2018-05-22,11:21:0",
             "user": "admin",
             "biaoqian": "幻神",
