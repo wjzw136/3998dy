@@ -22,19 +22,19 @@
             <div v-for="item in data">
                 <div class="flex_box" style="flex-shrink:1;width: 100%;background-color:#fff;padding: 15px">
                     <div style="width:120px;height:80px;flex-shrink:0">
-                        <img :src="'../image/'+ item.image" width="100%" height="100%" style="border-radius: 5px" alt=""
-                            srcset="">
+                        <img :src="item.image" width="100%" height="100%" style="border-radius: 5px" alt="" srcset="">
                     </div>
                     <div style="padding-left: 10px;width: 100%;align-self: flex-start;">
                         <div style="height: 20px;overflow: hidden;line-height: 20px">{{ item.biaoti }}</div>
                         <div style="height: 35px;line-height: 17px;overflow: hidden;" class="aui-font-size-12"
                             style="color: darkgray">{{ item.neirong }}</div>
                         <div style="height: 25px">
-                            <span style="border:teal 1px solid;height: 23px;font-size: 14px;padding: 0 5px">sjhdbas</span>
+                            <span
+                                style="border:teal 1px solid;height: 23px;font-size: 14px;padding: 0 5px">sjhdbas</span>
                         </div>
                     </div>
                     <div style="position: absolute;right:20px;">
-                        <img :src="'../image/'+ item.image" width="120px" height="80px" style="border-radius: 5px" alt="" srcset="">
+                        <img :src="item.image" width="80px" height="80px" style="border-radius: 40px" alt="" srcset="">
                     </div>
                     <!-- <div id="qiandao" style="flex-shrink:0;padding-left:10px;text-align: center">
                                         <div>点击查看</div>
@@ -44,9 +44,32 @@
                 </div>
             </div>
 
+            <div v-for="item in data">
+                <div class="flex_box" style="flex-shrink:1;width: 100%;background-color:#fff;padding: 15px">
+                    <div style="width:120px;height:80px;flex-shrink:0">
+                        <img :src="item.image" width="100%" height="100%" style="border-radius: 5px" alt="" srcset="">
+                    </div>
+                    <div style="padding-left: 10px;width: 100%;align-self: flex-start;">
+                        <div style="height: 20px;overflow: hidden;line-height: 20px">{{ item.biaoti }}</div>
+                        <div style="height: 35px;line-height: 17px;overflow: hidden;" class="aui-font-size-12"
+                            style="color: darkgray">{{ item.neirong }}</div>
+                        <div style="height: 25px">
+                            <span
+                                style="border:teal 1px solid;height: 23px;font-size: 14px;padding: 0 5px">sjhdbas</span>
+                        </div>
+                    </div>
+                    <!-- <div style="position: absolute;right:20px;">
+                        <img :src="item.image" width="80px" height="80px" style="border-radius: 40px" alt="" srcset="">
+                    </div> -->
+                    <!-- <div id="qiandao" style="flex-shrink:0;padding-left:10px;text-align: center">
+                                                    <div>点击查看</div>
+                                                    <div>{{ item.jifen }}<span class="aui-font-size-12">积分</span></div>
+                                                
+                                                </div> -->
+                </div>
+            </div>
 
-
-            <div id="sjd">
+            <!-- <div id="sjd">
                 <div v-for="item in data" class="aui-card-list">
                     <div class="aui-card-list-header">
                         <div>{{ item.biaoti }}</div>
@@ -57,7 +80,7 @@
                         <div class="flex_box_space_between">
                             <div>{{ item.neirong }}</div>
                             <div style="width:120px;height:80px;flex-shrink:0">
-                                <img :src="'../image/'+ item.image" width="100%" height="100%"
+                                <img :src="item.image" width="100%" height="100%"
                                     style="border-radius: 3px" alt="" srcset="">
                             </div>
                         </div>
@@ -67,7 +90,7 @@
                         <div style="color:coral">{{ item.youxi }}</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div v-show="error">
             {{ errormsg }}
@@ -92,7 +115,13 @@
             name: 'qiehuanyouxi'
         }, function (ret, err) {
             var yx = ret.value.key;
-            var res = yxdata[yx].zixun
+
+            if (yx != '' || yx != undefined) {
+                var res = yxdata[yx].zixun
+            } else {
+                res = ''
+            }
+
             if (res == undefined || res == '') {
                 example1.error = true
             } else {

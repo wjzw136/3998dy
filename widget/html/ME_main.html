@@ -51,6 +51,14 @@
 					<i class="aui-iconfont aui-icon-like"></i>
 					<div class="aui-gird-lable aui-font-size-14">签到</div>
 				</div>
+				<div id="xiezixun" class="aui-col-xs-3 ">
+					<i class="aui-iconfont aui-icon-like"></i>
+					<div class="aui-gird-lable aui-font-size-14">写资讯</div>
+				</div>
+				<div id="tijianyi" class="aui-col-xs-3 ">
+					<i class="aui-iconfont aui-icon-like"></i>
+					<div class="aui-gird-lable aui-font-size-14">提建议</div>
+				</div>
 				
 			</div>
 		</section>
@@ -251,6 +259,26 @@
 				url: './Z_new_header.html',
 				bounces: false,
 				pageParam: { biaoti: '签到', html: 'Z_qiandao' }
+			});
+		})
+
+		$api.addEvt($api.byId('xiezixun'), 'click', function () {
+			
+			api.openWin({
+				name: 'add_gonglue',
+				url: './Z_new_header.html',
+				bounces: false,
+				pageParam: { biaoti: '写咨询', html: 'add_gonglue' }
+			});
+		})
+
+		$api.addEvt($api.byId('tijianyi'), 'click', function () {
+			
+			api.openWin({
+				name: 'z_tijianyi',
+				url: './Z_new_header.html',
+				bounces: false,
+				pageParam: { biaoti: '提建议', html: 'Z_tijianyi' }
 			});
 		})
 	};

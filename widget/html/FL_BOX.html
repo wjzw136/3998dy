@@ -11,12 +11,25 @@
 </head>
 
 <body>
-
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/public.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+
+
+
+
+
+
+		 var header = $api.byId('header');
+		//适配iOS 7+，Android 4.4+状态栏
+		//var headerPos = $api.offset(header);
+		// var main = $api.byId('main');
+		//$api.fixStatusBar(header);
+
+
+
 		api.openFrame({
 			name: 'FL_header',
 			url: './FL_header.html',

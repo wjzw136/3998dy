@@ -57,6 +57,12 @@
             overflow: hidden;
         }
 
+        .bt {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+
         .sss {
             color: orange
         }
@@ -72,21 +78,22 @@
 
     <div id="dh" class="dh">
         <ul>
-            <li id="zonghe" gamename='zonghe'>
+            <!-- <li id="zonghe" gamename='zonghe' class="list">
                 <div class="imgbox" style="border: #fff 3px solid;"> <img src="../image/8.png" alt=""></div>
                 <div class="bt" style="color: #fff">综合</div>
-            </li>
-            <li v-for="data in yixuan" :gamename="data.name">
+            </li> -->
+            <li v-for="(data,index) in yixuan" :gamename="data.name" :enname="data.enname" v-on:click='dianji'
+                class="list">
                 <div class="imgbox"> <img :src='data.img' alt=""></div>
                 <div class="bt">{{data.name}}</div>
             </li>
             <li id="tj">
                 <!-- <div class="imgbox"> <img src="../image/8.png" alt=""></div> -->
-                <div class="imgbox" style="line-height: 60px"> <span style="font-size:40px;color: #ffffff">＋</span></div>
+                <div class="imgbox" style="line-height: 60px"> <span style="font-size:40px;color: #ffffff">＋</span>
+                </div>
                 <div class="bt">添加</div>
             </li>
-        </ul> 
-
+        </ul>
     </div>
     <div style="height:50px;background-color: #fff"></div>
 
@@ -99,10 +106,10 @@
 <script type="text/javascript">
     apiready = function () {
 
-         var NVNavigationBar = api.require('NVNavigationBar');
+        var NVNavigationBar = api.require('NVNavigationBar');
         NVNavigationBar.open({
             rect: {
-                x: api.winWidth  / 4,
+                x: api.winWidth / 4,
                 y: 137,
                 w: api.winWidth / 2,
                 h: 50
@@ -140,7 +147,7 @@
             fixedOn: api.frameName,
             id: 'first'
         }, function (ret, err) {
-           
+
             api.setFrameGroupIndex({
                 name: Group.FL_BOX.Group,
                 index: ret.index,
@@ -148,66 +155,79 @@
             });
         });
 
-        
+
         var list = new Vue({
             el: '#dh',
             data: {
                 yixuan: pingdao.yixuan,
+
+            },
+            mounted:function(){
+                var zonghedom = $api.dom('.list[enname="zonghe"]');
+                $api.css($api.eq(zonghedom, 1), 'border-color:#ffffff')
+                $api.css($api.eq(zonghedom, 2), 'color:#ffffff');
+            },
+            methods: {
+                dianji: function (e) {
+                    var list = $api.domAll('.list')
+                    for (var index = 0; index < list.length; index++) {
+
+                        $api.css($api.dom(list[index], '.imgbox'), 'border-color:orange')
+                        $api.css($api.dom(list[index], '.bt'), 'color:orange');
+                    }
+                    
+                    var el = e.currentTarget;
+                    $api.css($api.dom(el, '.imgbox'), 'border-color:#ffffff');
+                    $api.css($api.dom(el, '.bt'), 'color:#ffffff');
+
+                    api.sendEvent({
+                        name: 'qiehuanyouxi',
+                        extra: { key: el.getAttribute('enname') }
+                    });
+
+                    api.setFrameGroupIndex({
+                        name: Group.FL_BOX.Group,
+                        index: 0,
+                        scroll: true
+                    });
+                }
             }
         })
-       
-       
 
+        api.addEventListener({
+            name: 'yixuan'
+        }, function (ret, err) {
+            list.yixuan = ret.value.yixuan;
+
+        });
+
+        var tj = $api.byId('tj');
+        $api.addEvt(tj, 'click', function () {
+
+            if (list.yixuan.length >= 0) {
+                pingdao.yixuan = list.yixuan
+            }
+
+            api.openWin({
+                name: 'Z_yxlist',
+                url: './Z_yxlist.html',
+                bounces: false,
+                pageParam: { pingdao: pingdao }
+            });
+        });
 
 
         api.addEventListener({
             name: 'qiehuandh'
         }, function (ret, err) {
-            
+
             NVNavigationBar.setSelected({
                 id: 'first',
                 index: ret.value.key,
                 selected: true
             });
         });
-
-
-        var dh_li = $api.domAll('.dh ul li');
-        Array.prototype.forEach.call(dh_li, function (btn) {
-            btn.addEventListener('click', function (event) {
-                var getid = event.currentTarget.getAttribute('id');
-                if (getid == 'tj') {
-                    api.openWin({
-                        name: 'Z_yxlist',
-                        url: './Z_yxlist.html',
-                        bounces: false,
-                        pageParam: { pingdao: pingdao }
-                    });
-                } else {
-                    for (var index = 0; index < dh_li.length; index++) {
-                        $api.css($api.dom(dh_li[index], '.imgbox'), 'border-color:orange');
-                        $api.css($api.dom(dh_li[index], '.bt'), 'color:orange');
-                    }
-                    $api.css($api.dom(btn, '.imgbox'), 'border-color:#fff');
-                    $api.css($api.dom(btn, 'div:last-child'), 'color:#fff');
-                    // api.setFrameGroupIndex({
-                    //     name: Group.FL_BOX.Group,
-                    //     index: event.currentTarget.getAttribute('id')
-                    // });
-                    api.setFrameGroupIndex({
-                        name: Group.FL_BOX.Group,
-                        index: 0,
-                        scroll: true
-                    });
-                    api.sendEvent({
-                        name: 'qiehuanyouxi',
-                        extra: { key: event.currentTarget.getAttribute('gamename') }
-                    });
-                }
-            })
-        })
-
     }
 </script>
 
-</html>
+</html

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="A0000000000022"  version="0.0.1">
+<widget id="A6019024917822"  version="0.0.1">
     <name>蚊子腿</name>
     <description>
         Example For APICloud.
@@ -20,7 +20,8 @@
 	<preference name="autoUpdate" value="true" />
 	<preference name="smartUpdate" value="false" />
 	<preference name="debug" value="true"/>
-	<preference name="statusBarAppearance" value="true"/>
+	<preference name="iOS7StatusBarAppearance" value="false" />
+	<preference name="statusBarAppearance" value="false"/>
 	<permission name="readPhoneState" />
 	<permission name="camera" />
 	<permission name="record" />

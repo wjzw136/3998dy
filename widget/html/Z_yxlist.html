@@ -49,8 +49,9 @@
 					<div v-for="(data,index) in yixuan"
 						style="flex-shrink:0; position: relative; margin-right: 15px;margin-top: 15px;background-color:black;border-radius: 5px;overflow: hidden;">
 						<span style="padding:5px 15px;background-color: #ff8000">{{data.name}}</span>
-						<span style="padding:0 10px" v-on:click='shanchu(index)'><i
-								class="aui-iconfont aui-icon-close "></i></span>
+						
+						<span  v-if='index > 0' style="padding:0 10px" v-on:click='shanchu(index)'>
+							<i class="aui-iconfont aui-icon-close "></i></span>
 					</div>
 				</div>
 			</div>
@@ -116,29 +117,52 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/vue.js"></script>
+<script type="text/javascript" src="../script/public.js"></script>
 <script type="text/javascript">
 	apiready = function () {
+
+		api.ajax({
+			url: server+'/api/yxlist',
+			method: 'get',
+			timeout: 15,
+			dataType: 'json',
+			returnAll:false
+		},function(ret,err){
+			if (ret) {
+				//console.log(JSON.stringify(ret))
+			} else {
+				api.alert({
+					msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)
+				});
+			};
+		});
+		var	yxlist=api.pageParam.pingdao;
 		$api.addEvt($api.dom('#back'), 'click', function () {
 			api.closeWin();
 		});
 
 		$api.addEvt($api.dom('#queding'), 'click', function () {
-
+			api.sendEvent({
+				name: 'yixuan',
+				extra: {yixuan: yxlist.yixuan}
+			});
 			api.closeWin();
 		});
+
 		var list = new Vue({
 			el: '#main',
 			data: {
-				yixuan: api.pageParam.pingdao.yixuan,
-				pc: api.pageParam.pingdao.pc,
-				shouyou: api.pageParam.pingdao.shouyou,
-				yeyou: api.pageParam.pingdao.yeyou
+				yixuan: yxlist.yixuan,
+				pc: yxlist.pc,
+				shouyou: yxlist.shouyou,
+				yeyou: yxlist.yeyou
 			},
 			methods: {
 				shanchu: function (index) {
 					if (this.yixuan.length > 1) {
 
 						this.yixuan.splice(index, 1)
+						yxlist.yixuan=this.yixuan
 					} else {
 						api.toast({
 							msg: '至少选择一个游戏',
@@ -158,9 +182,10 @@
 					}
 					if (!istrue) {
 
-						if (this.yixuan.length < 3) {
+						if (this.yixuan.length < 4) {
 
 							list.yixuan.splice(this.yixuan.length, 0, abs[index])
+							yxlist.yixuan = this.yixuan
 						} else {
 							api.toast({
 								msg: '至多选择三个游戏',

@@ -34,7 +34,7 @@
                     <div class="flex_box_space_between">
                         <div>{{ item.neirong }}</div>
                         <div style="width:120px;height:80px;flex-shrink:0">
-                            <img :src="'../image/'+ item.image" width="100%" height="100%" style="border-radius: 3px" alt=""
+                            <img :src="item.image" width="100%" height="100%" style="border-radius: 3px" alt=""
                                 srcset="">
                         </div>
                     </div>
@@ -55,7 +55,7 @@
 
 <script type="text/javascript">
     apiready = function () {
-        //getlunbotu()
+        //getlunbotu()  
         var example1 = new Vue({
             el: '#sjd',
             data: {
@@ -67,12 +67,20 @@
             name: 'qiehuanyouxi'
         }, function (ret, err) {
             var yx = ret.value.key;
-            var res = yxdata[yx].jihuoma
+            
+
+            if (yxdata[yx]) {
+                    var res = yxdata[yx].jihuoma
+                } else {
+                    res = ''
+                }
             if (res == undefined || res == '') {
-                $api.html($api.dom('body'), 'cuowu');
-            } else {
-                example1.data = res
-            }
+                    example1.error = false
+                } else {
+                    example1.error = true
+                    example1.data = res
+                }
+            
         });
 
         var dh_li = $api.domAll('.aui-card-list');
